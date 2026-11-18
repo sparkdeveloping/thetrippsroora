@@ -10,3 +10,5 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 @media(hover:hover){.button.ink:hover{background:#35402b}.button.outline:hover{background:#e8e0d1}.text-link:hover{color:var(--gold)}}
 @media(max-width:760px){.split{display:block}.split .lede{margin-top:22px}.chapter-head{margin-bottom:32px}h2{font-size:clamp(3.4rem,12vw,5.5rem)}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+h1,h2,h3{overflow-wrap:anywhere}

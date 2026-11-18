@@ -1,29 +1,29 @@
 /* Native sticky runways. A settled or offscreen scene has no animation clock. */
 @media(min-height:620px){
- #experience[data-cinematic=on] .letter-hero{min-height:135svh;padding-bottom:0}
- #experience[data-cinematic=on] .letter-hero>.letter-inner{position:sticky;top:clamp(16px,3vw,44px);transform:perspective(1400px) translateY(var(--letter-y,0px)) rotateX(var(--letter-r,0deg)) scale(var(--letter-s,1));transform-origin:50% 50%}
- #experience[data-cinematic=on] .letter-memory{opacity:var(--memory-reveal,0)}
- #experience[data-cinematic=on] .album-runway{height:330svh}
- #experience[data-cinematic=on] .album-stage{height:100svh;position:sticky;top:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:14px;overflow:hidden}
- #experience[data-cinematic=on] .album-rig{height:100%}
- #experience[data-cinematic=on] .album-beat{position:absolute;inset:0;padding:0;opacity:var(--beat-opacity,0);pointer-events:none}
- #experience[data-cinematic=on] .album-beat:first-child{opacity:var(--beat-opacity,1)}
- #experience[data-cinematic=on] .album-frame{transform:translateX(var(--frame-x,0px)) rotateY(var(--frame-ry,0deg)) rotateZ(var(--frame-r,0deg)) scale(var(--frame-s,1))}
- #experience[data-cinematic=on] .album-copy{transform:translateY(var(--copy-y,0px))}
- #experience[data-cinematic=on] .calendar-runway{height:160svh}
- #experience[data-cinematic=on] .calendar-stage{position:sticky;top:8svh}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .letter-hero{min-height:135svh;padding-bottom:0}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .letter-hero>.letter-inner{position:sticky;top:clamp(16px,3vw,44px);transform:perspective(1400px) translateY(var(--letter-y,0px)) rotateX(var(--letter-r,0deg)) scale(var(--letter-s,1));transform-origin:50% 50%}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .letter-memory{opacity:var(--memory-reveal,0)}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .album-runway{height:330svh}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .album-stage{height:100svh;position:sticky;top:0;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:14px;overflow:hidden}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .album-rig{height:100%}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .album-beat{position:absolute;inset:0;padding:0;opacity:var(--beat-opacity,0);pointer-events:none}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .album-beat:first-child{opacity:var(--beat-opacity,1)}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .album-frame{transform:translateX(var(--frame-x,0px)) rotateY(var(--frame-ry,0deg)) rotateZ(var(--frame-r,0deg)) scale(var(--frame-s,1))}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .album-copy{transform:translateY(var(--copy-y,0px))}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .calendar-runway{height:160svh}
+ #experience[data-cinematic=on]:not([data-large-type=true]) .calendar-stage{position:sticky;top:8svh}
 }
-@media(min-width:761px) and (min-height:800px){#experience[data-cinematic=on] .heritage-runway{min-height:175svh}#experience[data-cinematic=on] .heritage-grid{position:sticky;top:8svh;min-height:84svh}}
-@media(max-width:760px) and (min-height:620px){#experience[data-cinematic=on] .union-runway{height:150svh;align-self:start}#experience[data-cinematic=on] .union-art{position:sticky;top:10svh}#experience[data-cinematic=on] .calendar-stage{top:9svh}}
-#experience[data-cinematic=on] .union-path{stroke-dashoffset:calc(1 - var(--union-draw,0))}
-#experience[data-cinematic=on] .union-resolution{opacity:calc(.2 + var(--union-finish,0)*.8);transform:translateY(calc((1 - var(--union-finish,0))*12px))}
-#experience[data-cinematic=on] .union-knot{opacity:var(--union-finish,0);transform:scale(calc(.3 + var(--union-finish,0)*.7))}
-#experience[data-cinematic=on] .left-origin{transform:translateX(calc((1 - var(--union-draw,0))*-18px))}
-#experience[data-cinematic=on] .right-origin{transform:translateX(calc((1 - var(--union-draw,0))*18px))}
+@media(min-width:761px) and (min-height:800px){#experience[data-cinematic=on]:not([data-large-type=true]) .heritage-runway{min-height:175svh}#experience[data-cinematic=on]:not([data-large-type=true]) .heritage-grid{position:sticky;top:8svh;min-height:84svh}}
+@media(max-width:760px) and (min-height:620px){#experience[data-cinematic=on]:not([data-large-type=true]) .union-runway{height:150svh;align-self:start}#experience[data-cinematic=on]:not([data-large-type=true]) .union-art{position:sticky;top:10svh}#experience[data-cinematic=on]:not([data-large-type=true]) .calendar-stage{top:9svh}}
+#experience[data-cinematic=on]:not([data-large-type=true]) .union-path{stroke-dashoffset:calc(1 - var(--union-draw,0))}
+#experience[data-cinematic=on]:not([data-large-type=true]) .union-resolution{opacity:calc(.2 + var(--union-finish,0)*.8);transform:translateY(calc((1 - var(--union-finish,0))*12px))}
+#experience[data-cinematic=on]:not([data-large-type=true]) .union-knot{opacity:var(--union-finish,0);transform:scale(calc(.3 + var(--union-finish,0)*.7))}
+#experience[data-cinematic=on]:not([data-large-type=true]) .left-origin{transform:translateX(calc((1 - var(--union-draw,0))*-18px))}
+#experience[data-cinematic=on]:not([data-large-type=true]) .right-origin{transform:translateX(calc((1 - var(--union-draw,0))*18px))}
 /* One date surface travels from the exact cell center into the keepsake. */
-#experience[data-cinematic=on] .calendar-date-reveal{transform:translate(calc(var(--cal-x,0px)*(1 - var(--cal-lift,0))),calc(var(--cal-y,0px)*(1 - var(--cal-lift,0)))) scale(calc(var(--cal-sx,.12) + (1 - var(--cal-sx,.12))*var(--cal-lift,0)),calc(var(--cal-sy,.12) + (1 - var(--cal-sy,.12))*var(--cal-lift,0)));border-radius:calc((1 - var(--cal-lift,0))*45%);background:color-mix(in srgb,var(--ivory) calc(var(--cal-lift,0)*100%),var(--olive));color:color-mix(in srgb,var(--olive) calc(var(--cal-lift,0)*100%),var(--ivory));box-shadow:none}
-#experience[data-cinematic=on] .calendar-date-reveal>.eyebrow,#experience[data-cinematic=on] .calendar-country{opacity:clamp(0,calc((var(--cal-lift,0) - .45)*2),1)}
-#experience[data-cinematic=on] .calendar-page{opacity:calc(1 - var(--cal-lift,0)*.94);transform:translateY(calc(var(--cal-lift,0)*-12px)) scale(calc(1 - var(--cal-lift,0)*.05))}
-#experience[data-cinematic=off] .letter-memory{display:none}#experience[data-cinematic=off] .calendar-date-reveal{position:relative;min-height:300px;margin-top:20px}#experience[data-cinematic=off] .look-slide{transform:none;transition:none}
+#experience[data-cinematic=on]:not([data-large-type=true]) .calendar-date-reveal{transform:translate(calc(var(--cal-x,0px)*(1 - var(--cal-lift,0))),calc(var(--cal-y,0px)*(1 - var(--cal-lift,0)))) scale(calc(var(--cal-sx,.12) + (1 - var(--cal-sx,.12))*var(--cal-lift,0)),calc(var(--cal-sy,.12) + (1 - var(--cal-sy,.12))*var(--cal-lift,0)));border-radius:calc((1 - var(--cal-lift,0))*45%);background:color-mix(in srgb,var(--ivory) calc(var(--cal-lift,0)*100%),var(--olive));color:color-mix(in srgb,var(--olive) calc(var(--cal-lift,0)*100%),var(--ivory));box-shadow:none}
+#experience[data-cinematic=on]:not([data-large-type=true]) .calendar-date-reveal>.eyebrow,#experience[data-cinematic=on]:not([data-large-type=true]) .calendar-country{opacity:clamp(0,calc((var(--cal-lift,0) - .45)*2),1)}
+#experience[data-cinematic=on]:not([data-large-type=true]) .calendar-page{opacity:calc(1 - var(--cal-lift,0)*.94);transform:translateY(calc(var(--cal-lift,0)*-12px)) scale(calc(1 - var(--cal-lift,0)*.05))}
+#experience[data-cinematic=off] .letter-memory,#experience[data-large-type=true] .letter-memory{display:none}#experience[data-cinematic=off] .calendar-date-reveal,#experience[data-large-type=true] .calendar-date-reveal{position:relative;min-height:300px;margin-top:20px}#experience[data-cinematic=off] .look-slide{transform:none;transition:none}
 @media(max-height:619px){.album-beat{padding:45px 0}.album-header{padding-right:100px}.album-frame .photo img{height:65svh;max-height:420px}.calendar-date-reveal{position:relative;min-height:280px;margin-top:18px}.letter-memory{display:none}.union-path{stroke-dashoffset:0!important}.union-resolution,.union-knot{opacity:1!important;transform:none!important}}
 @media(prefers-reduced-motion:reduce){.letter-memory{display:none}.album-stage,.letter-inner,.heritage-grid,.union-art,.calendar-stage{position:relative!important;top:auto!important;transform:none!important;height:auto!important}.album-runway,.heritage-runway,.union-runway,.calendar-runway{height:auto!important;min-height:0!important}.album-beat{position:relative!important;opacity:1!important}.album-frame,.album-copy,.chapter-dock{transform:none!important}.union-path{stroke-dashoffset:0!important}.union-resolution,.union-knot{opacity:1!important;transform:none!important}.calendar-date-reveal{position:relative!important;transform:none!important;min-height:300px;margin-top:20px}.calendar-date-reveal>*{opacity:1!important}.calendar-page{opacity:1!important;transform:none!important}}

@@ -8,9 +8,9 @@ export function mountCinema(ctx) {
   const beats = [...album.el.querySelectorAll('.album-beat')], meters = [...album.el.querySelectorAll('.album-meter i')];
   const union = root.querySelector('.union-art'), calendar = root.querySelector('.calendar-runway');
   let raf = 0, last = 0, dirty = true, initialized = false, lastY = scrollY, velocity = 0, width = innerWidth;
-  const canPin = () => ctx.moving() && innerHeight >= 620;
+  const canPin = () => ctx.moving() && innerHeight >= 620 && root.dataset.largeType !== 'true';
   function schedule() { if (!raf && !document.hidden && root.dataset.phase === 'reading') raf = ctx.frame(tick); }
-  function refresh() { dirty = true; schedule(); }
+  function refresh() { root.dataset.largeType = String(parseFloat(getComputedStyle(document.documentElement).fontSize) >= 24); dirty = true; accessibility(0); schedule(); }
   function accessibility(active) {
     beats.forEach((beat, i) => {
       const hidden = canPin() && i !== active;
