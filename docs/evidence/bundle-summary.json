@@ -1,0 +1,12 @@
+{
+  "runtimePackages": {
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "sharp": "0.34.5"
+  },
+  "sourceCSSBytes": 40189,
+  "baselineCSSBytes": 65258,
+  "emittedJSBytesAcrossAllChunks": 1268426,
+  "note": "All emitted chunks includes framework, admin and opt-in QA/axe chunks; this is not the initial transfer size."
+}

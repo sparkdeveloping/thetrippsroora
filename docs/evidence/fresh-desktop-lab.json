@@ -1,0 +1,151 @@
+{
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+    "width": 1728,
+    "height": 907,
+    "devicePixelRatio": 2,
+    "reducedMotion": false
+  },
+  "laboratoryOnly": true,
+  "navigation": [
+    {
+      "ttfb": 1234.7000000029802,
+      "domContentLoaded": 2014.8999999910593,
+      "load": 2946.7000000029802
+    }
+  ],
+  "paints": [
+    {
+      "name": "first-paint",
+      "time": 2048
+    },
+    {
+      "name": "first-contentful-paint",
+      "time": 2048
+    }
+  ],
+  "openingMilliseconds": 2184,
+  "lcpMilliseconds": 2048,
+  "lcpDetail": {
+    "tag": "H1",
+    "class": "",
+    "renderTime": 2048,
+    "loadTime": 0,
+    "size": 17641,
+    "url": ""
+  },
+  "cls": 0,
+  "longestObservedInteractionMilliseconds": 72,
+  "inpFieldMeasurement": "Not available; this is a finite laboratory session.",
+  "frames": {
+    "samples": 0,
+    "medianMilliseconds": null,
+    "p95Milliseconds": null,
+    "over20Milliseconds": 0,
+    "note": "rAF intervals; not proof of GPU presentation or physical-device FPS."
+  },
+  "longTasks": [
+    {
+      "start": 1794.8999999910593,
+      "duration": 90
+    },
+    {
+      "start": 2204.8999999910593,
+      "duration": 75
+    },
+    {
+      "start": 2302.2000000029802,
+      "duration": 122
+    },
+    {
+      "start": 2813.7999999970198,
+      "duration": 67
+    }
+  ],
+  "errors": [],
+  "missingLoadedImages": [],
+  "checks": [],
+  "accessibility": null,
+  "resources": [
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/002ugggfotvf2.css",
+      "duration": 243.70000000298023,
+      "transferSize": 10883
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/1q6rqvg3wqq2q.js",
+      "duration": 101,
+      "transferSize": 6485
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/turbopack-3xd-7z66s-4wg.js",
+      "duration": 180,
+      "transferSize": 4389
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/3zjzr6b7_2o_n.js",
+      "duration": 224.29999999701977,
+      "transferSize": 73477
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/1a83kuk0asdxk.js",
+      "duration": 448.09999999403954,
+      "transferSize": 50739
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/0d1lhi81xe61z.js",
+      "duration": 168.1000000089407,
+      "transferSize": 9521
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/3sav3yefleyvp.js",
+      "duration": 177.79999999701977,
+      "transferSize": 3951
+    },
+    {
+      "url": "https://vercel.live/_next-live/feedback/feedback.js",
+      "duration": 323.80000001192093,
+      "transferSize": 0
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/1aqjvtwysorwn.js",
+      "duration": 114.5,
+      "transferSize": 3828
+    },
+    {
+      "url": "https://vercel.live/_next-live/feedback/feedback.html?dpl=dpl_6Ah2mpyv7uA4uK3gmbJKHgCtodCD",
+      "duration": 372.20000000298023,
+      "transferSize": 0
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/.well-known/vercel/jwe",
+      "duration": 73.79999999701977,
+      "transferSize": 1160
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/favicon.ico",
+      "duration": 234.3999999910593,
+      "transferSize": 2651
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/story-meeting.webp",
+      "duration": 316.09999999403954,
+      "transferSize": 134210
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/story-promise.webp",
+      "duration": 294.3999999910593,
+      "transferSize": 162832
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/story-homecoming.webp",
+      "duration": 356.40000000596046,
+      "transferSize": 289172
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/?qa=1",
+      "duration": 77.8999999910593,
+      "transferSize": 300
+    }
+  ]
+}

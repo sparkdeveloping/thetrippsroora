@@ -1,0 +1,47 @@
+import { createScope } from './motion.mjs';
+import { mountReply } from './rsvp.mjs';
+import { mountEnvelope } from './envelope.mjs';
+import { mountNavigation } from './navigation.mjs';
+import { mountCinema } from './cinematic.mjs';
+import { mountGallery } from './gallery.mjs';
+import { mountMedia } from './media.mjs';
+
+export function mountExperience(root) {
+  const ctx = createScope(root);
+  ctx.metrics = { openingMilliseconds: null };
+  let openingStart = 0;
+  let reducedByGuest = false;
+  try { reducedByGuest = localStorage.getItem('cinematic-reduced') === '1'; } catch {}
+  ctx.moving = () => !ctx.reduced.matches && !reducedByGuest;
+  ctx.setPhase = phase => {
+    if (phase === 'opening') openingStart = performance.now();
+    if (phase === 'reading' && openingStart) { ctx.metrics.openingMilliseconds = performance.now() - openingStart; openingStart = 0; }
+    root.dataset.phase = phase;
+    ctx.$('letter').inert = phase !== 'reading';
+    root.querySelector('footer').inert = phase !== 'reading';
+    root.querySelector('nav').hidden = phase !== 'reading';
+    root.dispatchEvent(new Event('phasechange'));
+  };
+  function syncMotion() {
+    root.dataset.cinematic = ctx.moving() ? 'on' : 'off';
+    for (const toggle of [ctx.$('cinematic-toggle'), ctx.$('nav-motion')]) {
+      toggle.hidden = false; toggle.disabled = ctx.reduced.matches;
+      toggle.setAttribute('aria-pressed', String(!ctx.moving()));
+      toggle.textContent = ctx.reduced.matches ? 'Motion reduced by your device' : ctx.moving() ? 'Reduce motion' : 'Enable cinematic motion';
+    }
+    root.dispatchEvent(new Event('motionchange'));
+  }
+  const changeMotion = () => { reducedByGuest = !reducedByGuest; try { localStorage.setItem('cinematic-reduced', reducedByGuest ? '1' : '0'); } catch {} syncMotion(); };
+  ctx.on(ctx.$('cinematic-toggle'), 'click', changeMotion); ctx.on(ctx.$('nav-motion'), 'click', changeMotion);
+  ctx.on(ctx.reduced, 'change', syncMotion);
+  syncMotion();
+  const reply = mountReply(ctx);
+  mountEnvelope(ctx, reply); mountNavigation(ctx); mountCinema(ctx); mountGallery(ctx); mountMedia(ctx);
+  ctx.setPhase('sealed');
+  ctx.$('unlock-form').inert = false; reply.busy(ctx.$('unlock-form'), false);
+  ctx.$('entry-status').textContent = ''; root.dataset.ready = 'true';
+  if (root.dataset.mode === 'demo' && new URLSearchParams(location.search).has('qa')) {
+    import('./diagnostics.mjs').then(({ mountDiagnostics }) => { if (!ctx.signal.aborted) mountDiagnostics(ctx); });
+  }
+  return () => ctx.dispose();
+}

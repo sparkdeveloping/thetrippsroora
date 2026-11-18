@@ -1,0 +1,36 @@
+{
+  "commit": "c4ff977540cb499cbf87a84b184df154b8048db4",
+  "browser": "Linux Chromium 156",
+  "enlargedText": {
+    "viewport": {
+      "width": 340,
+      "height": 234,
+      "devicePixelRatio": 4
+    },
+    "browserZoom": "400%",
+    "rootFontSize": "32px (200%)",
+    "checksPassed": 19,
+    "checksTotal": 19,
+    "uncaughtErrors": [],
+    "documentHorizontalOverflow": false,
+    "documentScrollWidthMinusInnerWidth": -3
+  },
+  "freshNavigation": {
+    "viewport": {
+      "width": 1363,
+      "height": 936
+    },
+    "ttfbMilliseconds": 515.5,
+    "domContentLoadedMilliseconds": 709.7999999998137,
+    "loadMilliseconds": 1097.7000000001863,
+    "lcpMilliseconds": 884,
+    "cls": 0,
+    "openingMilliseconds": 2171.5,
+    "longestObservedInteractionMilliseconds": 64,
+    "uncaughtErrors": []
+  },
+  "limits": [
+    "Viewport and zoom tests are laboratory checks, not physical phones.",
+    "No field INP or mobile Core Web Vitals claim."
+  ]
+}

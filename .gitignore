@@ -5,5 +5,7 @@ node_modules/
 preview.html
 public/media/*.jpg
 public/media/*.png
-public/media/*.webp
 public/media/*.avif
+
+coverage/
+.lighthouseci/

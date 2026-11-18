@@ -1,0 +1,72 @@
+{
+  "evidence": "Observed browser-run results; full raw reports are retained where available.",
+  "viewports": [
+    {
+      "width": 320,
+      "height": 700,
+      "checksPassed": 19,
+      "checksTotal": 19
+    },
+    {
+      "width": 375,
+      "height": 812,
+      "checksPassed": 19,
+      "checksTotal": 19
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "checksPassed": 19,
+      "checksTotal": 19
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "checksPassed": 19,
+      "checksTotal": 19
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "checksPassed": 19,
+      "checksTotal": 19
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "checksPassed": 19,
+      "checksTotal": 19
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "checksPassed": 19,
+      "checksTotal": 19
+    }
+  ],
+  "checks": [
+    "Navigation visibility",
+    "Album beginning",
+    "Album promise",
+    "Album homecoming",
+    "Album reversal",
+    "Calendar origin",
+    "Calendar keepsake",
+    "Calendar reversal",
+    "Single shared date",
+    "Women look A",
+    "Women look E",
+    "Women look J",
+    "Women ten local files",
+    "Men look A",
+    "Men look E",
+    "Men look J",
+    "Men ten local files",
+    "No document overflow",
+    "No uncaught errors"
+  ],
+  "notes": [
+    "Viewport emulation is not physical-device testing.",
+    "These normal-size layouts passed on successive V6 preview commits. Later focused regressions cover the enlarged-text, short-height and confirmation fixes."
+  ]
+}

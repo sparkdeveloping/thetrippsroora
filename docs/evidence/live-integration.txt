@@ -1,0 +1,10 @@
+
+> the-letter-home@6.0.0 test:integration
+> node tests/live-integration.mjs
+
+▲ Next.js 16.4.6
+- Local:         http://127.0.0.1:3020
+- Network:       http://127.0.0.1:3020
+✓ Ready in 97ms
+✓ Running next.config.mjs took 11ms
+13 isolated live-mode Next.js -> HTTP RPC -> PostgreSQL integration checks passed. No hosted service or real guest records were used.
