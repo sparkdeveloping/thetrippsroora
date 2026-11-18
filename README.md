@@ -48,7 +48,7 @@ No emails are collected in the original RSVP, so this version intentionally give
 ## 4. Production setup
 
 1. Create a fresh Supabase project; run `db/schema.sql` in the SQL editor. Inspect generated grants and RLS. The SQL is written for Supabase Postgres; test it in a disposable project first. Do not run unreviewed migrations on an existing event database.
-2. Configure `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `INVITATION_PEPPER`, `ADMIN_TOKEN` as server-side environment secrets. Generate each secret independently, e.g. `openssl rand -hex 32`. Never use NEXT_PUBLIC_ for any of these. Keep the pepper stable; changing it invalidates existing invitation codes. Keep `ALLOW_DEMO=0` in production; production builds ignore demo mode even if set to 1.
+2. Configure `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `INVITATION_PEPPER`, `ADMIN_TOKEN` as server-side environment secrets. Generate each secret independently, e.g. `openssl rand -hex 32`. Never use NEXT_PUBLIC_ for any of these. Keep the pepper stable; changing it invalidates existing invitation codes. Keep `ALLOW_DEMO=0` in production; production builds ignore ALLOW_DEMO even if set to 1. ROORA_DEMO_MODE=1 explicitly enables a hosted visual demo, disables live APIs, and must not be used for real guests.
 3. Generate invitations locally with a matching pepper:
    ```bash
    node --env-file=.env.local scripts/create-invitation.mjs "Household display label" 2
@@ -88,3 +88,7 @@ Test: `python tests/cinematic-check.py` (requires Python Playwright and Chromium
 - Mobile tilt is automatic on platforms with unrestricted sensor access. On platforms requiring permission, the small phone-shaped envelope control requests it. Reduced motion and denied permissions are supported.
 - Decorative Unicode star ornaments and bottom-of-letter navigation were removed. The full cinematic scroll system remains.
 - Real iPhone sensor behavior, production compilation, and live Supabase integration still need verification. The project bundle does not include configuration secrets or original family photography.
+
+## V3.1 — Hosted demo and centering hotfix
+
+Deploy the new code, set `ROORA_DEMO_MODE=1` in the selected Vercel test deployment environment and redeploy. Enter `DEMO2027`. This mode is labeled DEMO INVITATION and all RSVP actions are simulated. Live verification, RSVP and admin API calls are disabled in this mode even if database credentials exist. Set `ROORA_DEMO_MODE=0` (or remove it), configure the database as above and redeploy before accepting real guests. The legacy ALLOW_DEMO flag remains local-only. The opening layout now explicitly centers a single grid track and is tested at multiple widths and heights.

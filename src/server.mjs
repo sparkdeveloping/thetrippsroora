@@ -1,7 +1,8 @@
+import {demoEnabled} from './mode.mjs';
 import {createHmac,timingSafeEqual} from 'node:crypto';
 import {normalizeCode} from './validation.mjs';
 export class ServiceError extends Error{constructor(message,status=503){super(message);this.status=status;}}
-export function configuration(){const {SUPABASE_URL:url,SUPABASE_SERVICE_ROLE_KEY:key,INVITATION_PEPPER:pepper,ADMIN_TOKEN:admin}=process.env;if(!url||!key||!pepper||pepper.length<32)throw new ServiceError('The RSVP service has not been configured. Please contact the organizers.');return {url,key,pepper,admin};}
+export function configuration(){if(demoEnabled())throw new ServiceError('Live guest services are disabled in demo mode.',503);const {SUPABASE_URL:url,SUPABASE_SERVICE_ROLE_KEY:key,INVITATION_PEPPER:pepper,ADMIN_TOKEN:admin}=process.env;if(!url||!key||!pepper||pepper.length<32)throw new ServiceError('The RSVP service has not been configured. Please contact the organizers.');return {url,key,pepper,admin};}
 export function hashCode(code,pepper){return createHmac('sha256',pepper).update('invitation:'+normalizeCode(code)).digest('hex');}
 export function hashClient(request,pepper){const platform=request.headers.get('x-vercel-forwarded-for')||request.headers.get('x-real-ip')||'unknown';return createHmac('sha256',pepper).update('client:'+platform.split(',')[0].trim()).digest('hex');}
 export function authorized(token,expected){if(typeof token!=='string'||!expected||expected.length<32)return false;const a=Buffer.from(token),b=Buffer.from(expected);return a.length===b.length&&timingSafeEqual(a,b);}

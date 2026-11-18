@@ -8,6 +8,7 @@ with sync_playwright() as p:
   errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
   page.set_content(preview.read_text());page.locator('#experience[data-initialized="1"]').wait_for()
   assert page.evaluate('document.documentElement.scrollWidth === innerWidth'),name+' horizontal overflow'
+  box=page.locator('#stage').bounding_box();assert abs(box['x']+box['width']/2-vp['width']/2)<1, (name,box);assert abs(box['y']+box['height']/2-vp['height']/2)<1,(name,box)
   assert page.locator('main').is_hidden();assert page.locator('.chapter-nav').is_hidden();assert page.locator('.env-letter').evaluate('(e)=>getComputedStyle(e).visibility')=='hidden'
   page.locator('#entry-code').fill('WRONG');page.locator('#open-button').click();page.locator('#entry-status').get_by_text('not recognized',exact=False).wait_for();assert page.locator('main').is_hidden()
   page.locator('#entry-code').fill('DEMO2027');page.locator('#open-button').click();page.locator('#experience[data-phase="reading"]').wait_for(timeout=6500)

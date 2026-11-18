@@ -10,7 +10,7 @@ export function invitationMarkup({demo=false}={}){return `
       <div class="env-pocket" aria-hidden="true"></div><div class="env-fold left" aria-hidden="true"></div><div class="env-fold right" aria-hidden="true"></div><div class="env-flap" id="flap" aria-hidden="true"></div>
       <div class="wax" id="wax" aria-hidden="true"><span>N<span>&amp;</span>J</span></div>
       <form class="envelope-access" id="unlock-form">
-        <p class="eyebrow">PRIVATE INVITATION</p><h1>Natalie &amp; Jordan</h1>
+        <p class="eyebrow">${demo?'DEMO INVITATION':'PRIVATE INVITATION'}</p><h1>Natalie &amp; Jordan</h1>
         <label for="entry-code" class="sr-only">Invitation code</label>
         <div class="entry-row"><input id="entry-code" name="code" required maxlength="80" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Invitation code"><button id="open-button" type="submit" aria-label="Open invitation">${icon('arrow')}</button></div>
         <p id="entry-status" role="status" aria-live="polite"></p>
