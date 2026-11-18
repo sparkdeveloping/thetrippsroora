@@ -1,3 +1,30 @@
+# The Letter Home — V4.2 | Verified photograph and navigation repair
+
+## Start here
+
+All six original family-supplied WebP files are **already included** in `public/media/`. The old automatic import procedure is no longer necessary. `npm run assets` now validates the required local files without any network dependency; `npm run build` refuses to build if a required WebP is missing or invalid. Historical V4.1 instructions below are superseded wherever they refer to importing photos or optional build checks. The standalone preview embeds the original image bytes.
+
+Copy this version into the existing repository, preserving `.env.local`, Vercel environment variables and Git metadata. Check that Git tracks all six assets:
+
+```sh
+npm install
+npm run assets
+git add .
+git ls-files public/media/*.webp
+npm test
+git commit -m "Bundle original photography and fix chapter navigation"
+git push
+```
+
+The final `git ls-files` result should show six WebP paths. The test deployment still uses `ROORA_DEMO_MODE=1` and code `DEMO2027`; leave this off for real guests and configure the existing Supabase integration. Files under `public/` are publicly addressable, regardless of the visual invitation gate. Family photographs are already on the original published site, but review permission before sharing a new public deployment. Do not put confidential venue information in public assets or HTML.
+
+The chapter navigator is now a hanging bookmark, connected to a spring-responsive SVG thread, and its panel is anchored consistently beneath the button. Explicit hidden state and scoped CSS protect sealed/opening/replay states. Album imagery is requested as the verified invitation opens, rather than waiting until the guest scrolls. The existing motion engine remains unchanged for this maintenance release.
+
+Verification in this release: all 6 uploaded images were decoded with Pillow (valid WebP); 10 Node tests passed; 4 Chromium photo/navigation configurations passed; 4 cinematic configurations and 3 opening/RSVP configurations passed. Browser checks use an embedded-asset standalone preview, not a Next.js deployment. No production deployment, physical phone, real database or frame-rate profiling was performed. To regenerate the preview locally, use `npm run preview`, then open `preview.html`. See `AUDIT.md` for the next-pass acceptance criteria.
+
+---
+Historical notes (superseded by the above for image handling and navigation):
+
 # The Letter Home V4 — The Living Album
 
 V4 replaces the old chapter menu and story layout with a pinned, reversible photo narrative. It retains the V3.1 invitation gate, hosted demo mode, RSVP backend and organizer dashboard. The earlier implementation notes below are historical where they conflict with this section.

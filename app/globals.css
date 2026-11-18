@@ -156,3 +156,23 @@ html{scroll-padding-top:0}
 #experience[data-cinematic=on] .album-frame{transform:perspective(850px) translate3d(var(--frame-x,0px),0,0) rotateY(var(--frame-ry,0deg)) rotateZ(var(--frame-r,0deg)) scale(var(--frame-s,1))}
 }
 @media(max-width:760px) and (max-height:700px){#experience[data-cinematic=on] .album-frame .photo img,#experience[data-cinematic=on] .album-frame .photo-fallback{max-height:29svh}#experience[data-cinematic=on] .album-stage{padding-top:48px;padding-bottom:14px}}
+
+/* V4.2: the navigator is a hanging bookmark, with one viewport-safe positioning model. */
+#experience>.chapter-nav[hidden],#experience:not([data-phase="reading"])>.chapter-nav{display:none!important}
+#experience[data-phase="reading"]>.chapter-nav{position:fixed;top:calc(max(0px,env(safe-area-inset-top)) + 24px);right:calc(max(0px,env(safe-area-inset-right)) + 18px);transform:none;display:block;padding:0;z-index:40;width:max-content;max-width:calc(100vw - 36px);background:none;border:0;box-shadow:none;backdrop-filter:none}
+#experience .chapter-nav .nav-tether{position:absolute;right:0;top:-63px;width:124px;height:64px;overflow:visible;pointer-events:none;filter:drop-shadow(0 1px 1px #49312722)}
+#experience .chapter-nav .chapter-dock{border-radius:5px 5px 18px 18px;background:#fcf8ef;box-shadow:0 5px 18px #49312720;border:1px solid #c5b28c;transform-origin:50% 0}
+#experience .chapter-nav #chapter-toggle{padding:0 12px;height:44px;min-width:124px}
+#experience .chapter-nav .dock-progress{height:2px;background:#a38b57}
+#experience .chapter-nav .nav-links{position:absolute;top:calc(100% + 10px);right:0;left:auto;transform:none;transform-origin:100% 0;max-height:calc(100svh - 112px - env(safe-area-inset-top));width:min(245px,calc(100vw - 36px));min-width:0;overflow-y:auto;overscroll-behavior:contain;border-radius:5px 5px 18px 18px;padding:9px 9px 9px 15px;isolation:isolate}
+#experience .chapter-nav .nav-links:before{content:"";position:absolute;left:28px;top:25px;bottom:33px;width:1px;background:#c4aa79;z-index:-1;pointer-events:none}
+#experience .chapter-nav .nav-links a{gap:13px;position:relative}
+#experience .chapter-nav .nav-links a span{background:#f9f5e9;border:1px solid #c4aa79;border-radius:50%;width:20px;height:20px;display:grid;place-items:center;flex-shrink:0;font-size:8px}
+#experience .chapter-nav .nav-links a[aria-current] span{background:#50583b;border-color:#50583b;color:#fff}
+#experience .chapter-nav .nav-links .nav-rsvp span{background:#50583b;color:#fff;border-color:#b6b991}
+@media(max-width:760px){#experience[data-phase="reading"]>.chapter-nav{top:calc(max(0px,env(safe-area-inset-top)) + 18px);right:calc(max(0px,env(safe-area-inset-right)) + 10px)}#experience .chapter-nav #chapter-toggle{min-width:108px;padding:0 10px}}
+/* Art direction: don't cut off the top of a portrait. Outfit boards stay contained. */
+.album-frame .photo img{object-position:center 40%}.closing-portrait .photo img{object-position:center 40%}
+/* Explicit ownership of panel geometry; defeats historical :has() specificity. */
+#experience #chapter-links{position:absolute;top:calc(100% + 10px);right:0;left:auto;transform:none;transform-origin:100% 0;max-height:calc(100svh - 112px - env(safe-area-inset-top));width:min(245px,calc(100vw - 36px));min-width:0;overflow-y:auto}
+#experience #chapter-links[hidden]{display:none!important}
