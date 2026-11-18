@@ -1,3 +1,20 @@
+# The Letter Home — V5: The woven celebration
+
+Three redesigned scenes replace V4.2's static heritage rings, date ticket and small attire contact sheets.
+
+- Heritage: separately identified sage and champagne threads draw together, weave and resolve into the shared story. Pinned desktop composition and independently pinned mobile art. The motif is editorial, not a claim about a traditional Shona symbol.
+- Calendar: actual Monday-first December 2027 grid, with Wednesday 1 highlighted; a scroll-driven transformation carries that date into a keepsake card. Countdown and practical details follow; the existing all-day calendar download is retained because ceremony time is not available.
+- Lookbook: each original supplied reference board becomes ten individually framed styles. Source files are unchanged. CSS crops, horizontal native snapping, previous/next, keyboard controls and a direct scrubber; full board lightbox remains. The palette retains guest/parent/couple distinctions.
+- Existing opening, album, navigation, demo/live RSVP and six bundled media assets retained.
+
+## Deploy
+Copy the source files over your existing project. Preserve local environment variables and existing Vercel configuration. Run `npm run assets`, `git add -f public/media/*.webp`, then `git add .`, commit and push. The original six WebP files must be tracked; build validation deliberately remains mandatory.
+
+## Verification
+Node unit tests and asset check pass. Standalone Chromium scene checks passed at desktop 1440x900, mobile 390x844 and 320x700, plus mobile reduced-motion. Physical iOS Safari, live database, and Next.js production build have not been verified in this environment.
+
+---
+
 # The Letter Home — V4.2 | Verified photograph and navigation repair
 
 ## Start here
