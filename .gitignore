@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.env*
+!.env.example
+preview.html
+public/media/*.jpg
+public/media/*.png
+public/media/*.webp
+public/media/*.avif

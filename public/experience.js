@@ -1,0 +1,98 @@
+const root=document.querySelector('#experience');
+if(root && !root.dataset.initialized){root.dataset.initialized='1';init(root);}
+function init(root){
+const $=(id)=>document.getElementById(id), demo=root.dataset.mode==='demo', reduced=matchMedia('(prefers-reduced-motion: reduce)');
+const arrival=$('arrival'), envelope=$('envelope'), stage=$('stage'), open=$('open-button'), motion=$('motion-button'), letter=$('letter');
+let phase='sealed', animationRun=0, orientationActive=false, baseline=null, target=[8,-8], current=[8,-8], frame=0;
+const clamp=(n,min,max)=>Math.min(max,Math.max(min,n));
+function smoothTilt(){current=current.map((v,i)=>v+(target[i]-v)*.18);envelope.style.setProperty('--rx',`${current[0]}deg`);envelope.style.setProperty('--ry',`${current[1]}deg`);if(current.some((v,i)=>Math.abs(v-target[i])>.04))frame=requestAnimationFrame(smoothTilt);else frame=0;}
+function tilt(x,y){if(reduced.matches||phase!=='sealed')return;target=[x,y];if(!frame)frame=requestAnimationFrame(smoothTilt);}
+stage.addEventListener('pointermove',e=>{if(e.pointerType==='touch'||orientationActive)return;const r=stage.getBoundingClientRect();tilt(clamp((.5-(e.clientY-r.top)/r.height)*22,-12,12),clamp(((e.clientX-r.left)/r.width-.5)*25,-13,13));});stage.addEventListener('pointerleave',()=>{if(!orientationActive)tilt(8,-8);});
+function orientation(e){if(phase!=='sealed'||!orientationActive||reduced.matches||e.beta===null||e.gamma===null)return;if(!baseline)baseline=[e.beta,e.gamma];tilt(clamp((e.beta-baseline[0])*.22,-7,7),clamp((e.gamma-baseline[1])*.24,-7,7));}
+function stopMotion(){window.removeEventListener('deviceorientation',orientation);orientationActive=false;baseline=null;if(frame)cancelAnimationFrame(frame);frame=0;}
+if('DeviceOrientationEvent' in window && !reduced.matches && matchMedia('(pointer:coarse)').matches){motion.hidden=false;motion.addEventListener('click',async()=>{try{if(orientationActive){stopMotion();motion.textContent='Enable tilt effect';tilt(8,-8);return;}const request=DeviceOrientationEvent.requestPermission;if(typeof request==='function' && await request.call(DeviceOrientationEvent)!=='granted'){motion.textContent='Tilt unavailable';return;}orientationActive=true;window.addEventListener('deviceorientation',orientation);motion.textContent='Disable tilt effect';}catch{motion.textContent='Tilt unavailable';}});}
+reduced.addEventListener('change',()=>{if(reduced.matches){stopMotion();motion.hidden=true;}else if('DeviceOrientationEvent' in window && matchMedia('(pointer:coarse)').matches)motion.hidden=false;});
+function setPhase(p){phase=p;root.dataset.phase=p;window.dispatchEvent(new Event('invitationphase'));}
+function finish({focus=true,scroll=true}={}){setPhase('reading');arrival.hidden=true;open.disabled=false;document.body.style.overflow='';document.querySelectorAll('.flight-letter').forEach(el=>el.remove());if(scroll)window.scrollTo({top:0,behavior:'instant'});if(focus)letter.focus({preventScroll:true});try{sessionStorage.setItem('letter-opened','1')}catch{}}
+async function opening(){if(phase!=='sealed')return;const run=++animationRun;setPhase('opening');open.disabled=true;stopMotion();if(reduced.matches||!Element.prototype.animate){finish();return;}const animate=(el,keyframes,options)=>el.animate(keyframes,{fill:'forwards',...options});const alive=()=>run===animationRun;let flight;try{document.body.style.overflow='hidden';const rotate=animate(envelope,[{transform:getComputedStyle(envelope).transform},{transform:'rotateX(0deg) rotateY(0deg) rotateZ(0deg)'}],{duration:260,easing:'cubic-bezier(.2,.8,.2,1)'});await rotate.finished;if(!alive())return;const wax=animate($('wax'),[{transform:'translate(-50%,-50%) translateZ(9px)',opacity:1},{transform:'translate(-50%,-35%) translateZ(12px) rotate(-12deg)',opacity:0}],{duration:230,easing:'ease-in'});const flap=animate($('flap'),[{transform:'translateZ(5px) rotateX(0deg)'},{transform:'translateZ(5px) rotateX(174deg)'}],{duration:540,easing:'cubic-bezier(.2,.8,.2,1)'});await Promise.all([wax.finished,flap.finished]);if(!alive())return;const card=envelope.querySelector('.env-letter');await animate(card,[{transform:'translate3d(0,0,0)'},{transform:'translate3d(0,-61%,4px)'}],{duration:650,easing:'cubic-bezier(.2,.75,.1,1)'}).finished;if(!alive())return;const r=card.getBoundingClientRect();flight=document.createElement('div');flight.className='flight-letter';flight.setAttribute('aria-hidden','true');flight.innerHTML=card.innerHTML;Object.assign(flight.style,{left:`${r.left}px`,top:`${r.top}px`,width:`${r.width}px`,height:`${r.height}px`});document.body.append(flight);card.style.visibility='hidden';setPhase('unfolding');const backdrop=animate(arrival,[{opacity:1},{opacity:.15}],{duration:680,easing:'ease-in-out'});await animate(flight,[{left:`${r.left}px`,top:`${r.top}px`,width:`${r.width}px`,height:`${r.height}px`,borderRadius:'3px'},{left:'0px',top:'0px',width:`${innerWidth}px`,height:`${innerHeight}px`,borderRadius:'0px'}],{duration:740,easing:'cubic-bezier(.65,0,.2,1)'}).finished;if(!alive())return;arrival.hidden=true;window.scrollTo({top:0,behavior:'instant'});backdrop.cancel();await animate(flight,[{opacity:1},{opacity:0}],{duration:230,easing:'ease-out'}).finished;if(alive())finish();}catch{if(alive())finish();}finally{flight?.remove();}}
+open.addEventListener('click',opening);stage.addEventListener('click',e=>{if(e.target.closest('.envelope'))opening();});
+function reset(){animationRun++;stopMotion();for(const el of [arrival,envelope,$('wax'),$('flap'),envelope.querySelector('.env-letter')]){el.getAnimations().forEach(a=>a.cancel());el.style.removeProperty('visibility');}document.querySelectorAll('.flight-letter').forEach(el=>el.remove());document.body.style.overflow='';arrival.hidden=false;open.disabled=false;motion.textContent='Enable tilt effect';setPhase('sealed');try{history.replaceState(null,'',location.pathname+location.search)}catch{};window.scrollTo({top:0,behavior:'instant'});open.focus({preventScroll:true});try{sessionStorage.removeItem('letter-opened')}catch{}}
+$('replay').addEventListener('click',reset);
+function direct(id){animationRun++;stopMotion();finish({focus:false,scroll:false});const el=document.getElementById(id);if(el){el.scrollIntoView({behavior:'instant',block:'start'});if(!el.hasAttribute('tabindex'))el.setAttribute('tabindex','-1');el.focus({preventScroll:true});}}
+root.querySelectorAll('[data-direct]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const hash=a.getAttribute('href');try{history.replaceState(null,'',hash)}catch{};direct(hash.slice(1));}));
+const initialHash=location.hash.slice(1);if(initialHash&&document.getElementById(initialHash))direct(initialHash);else{try{if(sessionStorage.getItem('letter-opened')==='1')finish({focus:false});}catch{}}
+// Native scrolling; chapter progress and current section are information, never a scroll lock.
+const sections=[...document.querySelectorAll('main section[id]')],links=[...document.querySelectorAll('.chapter-nav a[href^="#"]')];let scrollFrame=0;function progress(){scrollFrame=0;const top=window.scrollY,range=document.documentElement.scrollHeight-innerHeight;root.style.setProperty('--progress',`${range>0?clamp(top/range*100,0,100):0}%`);let active='';for(const el of sections)if(el.getBoundingClientRect().top<=140)active=el.id;links.forEach(a=>a.getAttribute('href')===`#${active}`?a.setAttribute('aria-current','location'):a.removeAttribute('aria-current'));}window.addEventListener('scroll',()=>{if(!scrollFrame)scrollFrame=requestAnimationFrame(progress)},{passive:true});progress();
+// Cinematic choreography is reversible and driven by native scroll.
+createCinematicEngine(root,reduced);
+// Photo assets are optional and never substituted with invented people. Only load provided files.
+const images=[...document.querySelectorAll('img[data-src]')];for(const img of images){img.addEventListener('load',()=>{img.hidden=false;img.previousElementSibling.hidden=true;const button=img.closest('.look-photo');if(button)button.disabled=false;});img.addEventListener('error',()=>{img.hidden=true;});}const load=img=>{if(!img.hasAttribute('src')&&!demo)img.src=img.dataset.src;};if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>{for(const e of entries)if(e.isIntersecting){load(e.target.querySelector('img'));io.unobserve(e.target);}},{rootMargin:'350px'});images.forEach(img=>io.observe(img.closest('figure')));}else images.forEach(load);
+const days=()=>{const tz='Africa/Harare';const parts=new Intl.DateTimeFormat('en-CA',{timeZone:tz,year:'numeric',month:'numeric',day:'numeric'}).formatToParts(new Date());const get=k=>Number(parts.find(p=>p.type===k).value);const today=Date.UTC(get('year'),get('month')-1,get('day'));$('days-left').textContent=String(Math.max(0,Math.round((Date.UTC(2027,11,1)-today)/86400000)));};days();setInterval(days,60000);
+root.querySelectorAll('.swatch').forEach(button=>button.addEventListener('click',()=>{root.querySelectorAll('.swatch').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));$('fabric').style.setProperty('--fabric',button.dataset.hex);$('fabric-name').textContent=button.dataset.color.toUpperCase();$('fabric-hex').textContent=button.dataset.hex;$('color-role').textContent=button.dataset.role;}));
+const tabs=[...root.querySelectorAll('[role=tab]')];function selectTab(i,focus=false){tabs.forEach((t,j)=>{t.setAttribute('aria-selected',String(i===j));t.tabIndex=i===j?0:-1;$(t.getAttribute('aria-controls')).hidden=i!==j;});if(focus)tabs[i].focus();}tabs.forEach((tab,i)=>{tab.addEventListener('click',()=>selectTab(i));tab.addEventListener('keydown',e=>{let n;if(e.key==='ArrowRight'||e.key==='ArrowLeft')n=1-i;else if(e.key==='Home')n=0;else if(e.key==='End')n=1;if(n!==undefined){e.preventDefault();selectTab(n,true);}});});
+root.querySelectorAll('.look-photo').forEach(btn=>btn.addEventListener('click',()=>{const img=btn.querySelector('img');if(img.hidden||!img.naturalWidth)return;$('dialog-image').src=img.src;$('dialog-image').alt=img.alt;$('dialog-caption').textContent=img.alt;$('image-dialog').showModal();}));$('image-dialog').addEventListener('click',e=>{if(e.target===$('image-dialog'))$('image-dialog').close();});
+if(demo){$('calendar-link').href='data:text/calendar;charset=utf-8,'+encodeURIComponent('BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//The Letter Home//Roora//EN\r\nBEGIN:VEVENT\r\nUID:nj-roora-20271201@letter-home\r\nDTSTAMP:20261118T000000Z\r\nDTSTART;VALUE=DATE:20271201\r\nDTEND;VALUE=DATE:20271202\r\nSUMMARY:Natalie & Jordan - Roora celebration\r\nLOCATION:Zimbabwe\r\nEND:VEVENT\r\nEND:VCALENDAR');$('calendar-link').download='roora.ics';}
+// RSVP state is in memory only. No codes or guest data in browser storage.
+let invitation=null, code='', requestId='', fingerprint='';const verify=$('verify-form'), form=$('rsvp-form');const description=(e)=>e instanceof Error?e.message:'Something went wrong. Please try again.';
+function busy(f,on){f.querySelectorAll('button,input,textarea,select').forEach(el=>{if(el.closest('#attending-fields')&&$('attending-fields').hidden)return;el.disabled=on;});f.setAttribute('aria-busy',String(on));}
+async function api(path,body){if(demo){await new Promise(r=>setTimeout(r,220));if(path==='invitation'){if(body.code.trim().toUpperCase()!=='DEMO2027')throw new Error('That invitation code was not recognized.');return {maxGuests:2,label:'Preview guest',allowUpdates:true};}return {reference:'PREVIEW-2027',demo:true};}const control=new AbortController(),timer=setTimeout(()=>control.abort(),12000);try{const r=await fetch(`/api/${path}`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:control.signal,cache:'no-store'});let data;try{data=await r.json()}catch{throw new Error('The service is temporarily unavailable. Please try again.');}if(!r.ok)throw new Error(data.error||'Unable to complete your request.');return data;}catch(e){if(e.name==='AbortError')throw new Error('The request timed out. You can safely retry.');throw e;}finally{clearTimeout(timer);}}
+function attendance(){const yes=form.querySelector('[name=attendance]:checked')?.value==='yes';$('attending-fields').hidden=!yes;for(const el of $('attending-fields').querySelectorAll('input,select,textarea'))el.disabled=!yes;for(const el of form.querySelectorAll('[name=travel]'))el.required=yes;}
+form.addEventListener('change',attendance);attendance();
+verify.addEventListener('submit',async e=>{e.preventDefault();const sent=$('code').value.trim();$('verify-status').textContent='Checking your invitation…';busy(verify,true);try{invitation=await api('invitation',{code:sent});code=sent;verify.hidden=true;form.hidden=false;$('step-label').textContent='02 / YOUR REPLY';$('step-count').textContent='2 — 2';$('guest-heading').textContent=invitation.label?`Your reply, ${invitation.label}.`:'Your reply.';$('guest-count').replaceChildren(...Array.from({length:invitation.maxGuests},(_,i)=>new Option(String(i+1),String(i+1))));$('guest-name').focus();$('verify-status').textContent='';}catch(err){$('verify-status').textContent=description(err);}finally{busy(verify,false);}});
+$('change-code').addEventListener('click',()=>{invitation=null;code='';requestId='';fingerprint='';form.reset();verify.reset();attendance();form.hidden=true;verify.hidden=false;$('step-label').textContent='01 / YOUR INVITATION';$('step-count').textContent='1 — 2';$('code').focus();});
+form.addEventListener('submit',async e=>{e.preventDefault();if(!invitation)return;const fd=new FormData(form),yes=fd.get('attendance')==='yes';const payload={code,name:String(fd.get('name')||'').trim(),attendance:yes?'yes':'no',guests:yes?Number(fd.get('guests')):0,dietary:yes?String(fd.get('dietary')||'').trim():'',travel:yes?fd.get('travel'):null,message:String(fd.get('message')||'').trim()};const nextFingerprint=JSON.stringify(payload);if(nextFingerprint!==fingerprint){requestId=crypto.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2)}`;fingerprint=nextFingerprint;}busy(form,true);$('rsvp-status').textContent='Sending your reply…';try{const result=await api('rsvp',{...payload,requestId});$('reply-form-wrap').hidden=true;const confirmation=$('confirmation');confirmation.hidden=false;$('confirmed-kicker').textContent=demo?'PREVIEW ONLY · NO RSVP SENT':'REPLY RECEIVED';$('confirmed-heading').textContent=yes?'We look forward to seeing you.':'Thank you for letting us know.';$('confirmed-message').textContent=demo?'This is a simulated confirmation. No guest information was sent or saved.':yes?'Your attendance has been recorded. The organizers will share further details with confirmed guests.':'Your response has been recorded. Thank you for being part of our story.';$('confirmed-reference').textContent=`REFERENCE / ${result.reference}`;$('edit-rsvp').hidden=invitation.allowUpdates===false;confirmation.focus();if(!reduced.matches)$('confirmation').querySelector('.confirmed-seal').animate([{transform:'scale(.7) rotate(-15deg)',opacity:0},{transform:'scale(1) rotate(0)',opacity:1}],{duration:440,easing:'cubic-bezier(.2,.8,.2,1)'});$('rsvp-status').textContent='';}catch(err){$('rsvp-status').textContent=description(err);}finally{busy(form,false);attendance();}});
+$('edit-rsvp').addEventListener('click',()=>{$('confirmation').hidden=true;$('reply-form-wrap').hidden=false;$('guest-name').focus();});
+}
+
+// Scroll position is authoritative. Only presentation layers are spring-interpolated.
+function createCinematicEngine(root, reduced){
+ const toggle=document.getElementById('cinematic-toggle');
+ const items=[...root.querySelectorAll('[data-cine]')].map(el=>({el,kind:el.dataset.cine,top:0,height:0,p:0,v:0,active:false}));
+ const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+ const ease=x=>{x=clamp(x);return x*x*(3-2*x)};
+ let off=false;try{off=localStorage.getItem('cinematic-reduced')==='1'}catch{}
+ let raf=0,last=0,dirty=true,initialized=false,lastY=scrollY,velocity=0;
+ const enabled=()=>!reduced.matches&&!off&&root.dataset.phase==='reading';
+ function schedule(){if(!raf)raf=requestAnimationFrame(tick);}
+ function refresh(){dirty=true;schedule();}
+ function sync(){
+  const allowed=!reduced.matches&&!off;root.dataset.cinematic=allowed?'on':'off';
+  toggle.hidden=false;toggle.disabled=reduced.matches;toggle.setAttribute('aria-pressed',String(allowed));
+  toggle.textContent=reduced.matches?'Cinematic motion reduced by device':allowed?'Reduce cinematic motion':'Enable cinematic motion';
+  initialized=false;refresh();
+ }
+ function tick(now){
+  raf=0;const dt=last?clamp((now-last)/1000,.001,.033):1/60;last=now;
+  const y=scrollY,h=innerHeight;
+  if(!enabled()){initialized=false;lastY=y;velocity=0;return;}
+  if(dirty){for(const a of items){const r=a.el.getBoundingClientRect();a.top=r.top+y;a.height=r.height;}dirty=false;}
+  const speed=clamp((y-lastY)/Math.max(dt,.008),-2400,2400);lastY=y;
+  velocity+=(speed-velocity)*(1-Math.exp(-10*dt));
+  let unsettled=Math.abs(velocity)>4;
+  for(const a of items){
+   const visible=a.top+a.height>y-h*.45&&a.top<y+h*1.45;
+   const goal=a.kind==='memory'?clamp((y+h*.64-a.top)/(a.height+h*.28)):clamp((y+h-a.top)/(h+a.height));
+   if(!visible||!initialized||!a.active){a.p=goal;a.v=0;}
+   else { // analytic critically damped spring, independent of refresh rate
+    const omega=17,delta=a.p-goal,term=a.v+omega*delta,decay=Math.exp(-omega*dt);
+    a.p=goal+(delta+term*dt)*decay;a.v=(a.v-omega*term*dt)*decay;
+    if(Math.abs(a.p-goal)<.0005&&Math.abs(a.v)<.005){a.p=goal;a.v=0;}else unsettled=true;
+   }
+   if(visible||a.active||!initialized){
+    const p=clamp(a.p),f=ease(1-Math.abs(p-.5)*2),s=clamp(velocity/2400,-1,1);
+    const props={'--cine-p':p.toFixed(4),'--cine-focus':f.toFixed(4),'--cine-shift':`${((.5-p)*52).toFixed(2)}px`,'--cine-tilt':`${((.5-p)*8-s*1.4).toFixed(2)}deg`,'--cine-zoom':(1.10-f*.10).toFixed(4),'--cine-expand':(.88+f*.12).toFixed(4),'--cine-reveal':`${(7*(1-f)).toFixed(2)}%`,'--cine-thread':`${(p*100).toFixed(2)}%`,'--cine-join':`${((1-f)*27+5).toFixed(2)}%`,'--cine-drift':`${((p-.5)*70).toFixed(2)}px`,'--cine-camera':(.78+f*.30).toFixed(4),'--cine-depth':`${((1-f)*-110).toFixed(2)}px`,'--cine-aperture':`${((1-f)*12).toFixed(2)}%`,'--cine-camera-tilt':`${((.5-p)*17-s*2).toFixed(2)}deg`,'--cine-camera-shift':`${((.5-p)*90).toFixed(2)}px`};
+    for(const [k,v] of Object.entries(props))a.el.style.setProperty(k,v);
+   }
+   a.active=visible;
+  }
+  initialized=true;if(unsettled)schedule();else last=0;
+ }
+ toggle.addEventListener('click',()=>{off=!off;try{localStorage.setItem('cinematic-reduced',off?'1':'0')}catch{}sync();});
+ reduced.addEventListener('change',sync);window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',refresh,{passive:true});window.addEventListener('invitationphase',()=>{initialized=false;refresh();});window.addEventListener('pageshow',refresh);
+ if('ResizeObserver' in window){const ro=new ResizeObserver(refresh);ro.observe(root);items.forEach(a=>ro.observe(a.el));}
+ document.fonts?.ready.then(refresh);sync();
+ // Physical fabric interaction without touching document scrolling; disabled for reduced motion.
+ const fabric=document.getElementById('fabric');
+ fabric.addEventListener('pointermove',e=>{if(!enabled()||e.pointerType==='touch')return;const r=fabric.getBoundingClientRect();fabric.style.setProperty('--light-x',`${clamp((e.clientX-r.left)/r.width)*100}%`);fabric.style.setProperty('--light-y',`${clamp((e.clientY-r.top)/r.height)*100}%`);});
+ fabric.addEventListener('pointerleave',()=>{fabric.style.removeProperty('--light-x');fabric.style.removeProperty('--light-y');});
+}

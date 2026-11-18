@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//The Letter Home//Roora//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:natalie-jordan-roora-20271201@letter-home
+DTSTAMP:20261118T000000Z
+DTSTART;VALUE=DATE:20271201
+DTEND;VALUE=DATE:20271202
+SUMMARY:Natalie & Jordan - Roora celebration
+LOCATION:Zimbabwe
+DESCRIPTION:Save the date. Ceremony time and exact location to be shared by the organizers.
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR

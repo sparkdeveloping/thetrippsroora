@@ -1,0 +1,4 @@
+import {configuration,hashCode,rpc,readJson,limit,json,fail} from '../../../src/server.mjs';
+import {validateReply} from '../../../src/validation.mjs';
+export const runtime='nodejs';
+export async function POST(request){try{const config=configuration();await limit(config,request,'rsvp',15);const parsed=validateReply(await readJson(request));if(parsed.error)return json({error:parsed.error},400);const v=parsed.value;const result=await rpc(config,'roora_submit',{p_code_hash:hashCode(v.code,config.pepper),p_name:v.name,p_attending:v.attendance==='yes',p_guests:v.guests,p_dietary:v.dietary,p_travel:v.travel===null?null:v.travel==='yes',p_message:v.message,p_request_id:v.requestId});if(result.error)return json({error:result.error},result.status||400);return json({reference:result.reference});}catch(e){return fail(e);}}
