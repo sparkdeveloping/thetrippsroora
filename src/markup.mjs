@@ -11,11 +11,11 @@ export function invitationMarkup({demo=false}={}){return `
       <div class="env-letter" aria-hidden="true"><div class="letter-border"><span class="eyebrow">WITH LOVE &amp; GRATITUDE</span><span class="mini-name">Natalie <i>&amp;</i><br>Jordan</span><span class="eyebrow">01 DECEMBER 2027 · ZIMBABWE</span></div></div>
       <div class="env-pocket" aria-hidden="true"></div><div class="env-fold left" aria-hidden="true"></div><div class="env-fold right" aria-hidden="true"></div><div class="env-flap" id="flap" aria-hidden="true"></div>
       <div class="wax" id="wax" aria-hidden="true"><span>N<span>&amp;</span>J</span></div>
-      <form class="envelope-access" id="unlock-form">
+      <form class="envelope-access" id="unlock-form" inert aria-busy="true">
         <p class="eyebrow">${demo?'DEMO INVITATION':'PRIVATE INVITATION'}</p><h1>Natalie &amp; Jordan</h1>
         <label for="entry-code" class="sr-only">Invitation code</label>
         <div class="entry-row"><input id="entry-code" aria-describedby="entry-status" name="code" required maxlength="80" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Invitation code"><button id="open-button" type="submit" aria-label="Open invitation">${icon('arrow')}</button></div>
-        <p id="entry-status" role="status" aria-live="polite"></p>
+        <p id="entry-status" role="status" aria-live="polite">Preparing your invitation…</p>
       </form>
       <button class="motion-control" id="motion-button" type="button" aria-label="Enable tilt effect" aria-pressed="false" hidden><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="8" y="4" width="8" height="16" rx="2" transform="rotate(22 12 12)" stroke="currentColor" stroke-width="1.4"/><path d="M3 10a9 9 0 0 1 5-6m13 10a9 9 0 0 1-5 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></button>
     </div>

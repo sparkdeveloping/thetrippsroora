@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 const base = process.env.TEST_BASE_URL || 'http://127.0.0.1:3002';
 const response = await fetch(base), html = await response.text();
+assert.match(html, /id="unlock-form" inert aria-busy="true"/);
 assert.equal(response.status, 200); assert.match(html, /data-mode="demo"/); assert.match(html, /data-phase="sealed"/);
 assert.equal(response.headers.get('x-frame-options'), 'DENY'); assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
 let checked = 1;

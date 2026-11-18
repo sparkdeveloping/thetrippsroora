@@ -36,6 +36,8 @@ export function mountExperience(root) {
   const reply = mountReply(ctx);
   mountEnvelope(ctx, reply); mountNavigation(ctx); mountCinema(ctx); mountGallery(ctx); mountMedia(ctx);
   ctx.setPhase('sealed');
+  ctx.$('unlock-form').inert = false; reply.busy(ctx.$('unlock-form'), false);
+  ctx.$('entry-status').textContent = ''; root.dataset.ready = 'true';
   if (root.dataset.mode === 'demo' && new URLSearchParams(location.search).has('qa')) {
     import('./diagnostics.mjs').then(({ mountDiagnostics }) => { if (!ctx.signal.aborted) mountDiagnostics(ctx); });
   }
