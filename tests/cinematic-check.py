@@ -5,7 +5,7 @@ with sync_playwright() as p:
  b=p.chromium.launch(executable_path='/usr/bin/chromium',args=['--no-sandbox'])
  for name,vp,reduce in [('desktop',{'width':1440,'height':900},'no-preference'),('mobile',{'width':390,'height':844},'no-preference'),('reduced',{'width':320,'height':700},'reduce')]:
   page=b.new_page(viewport=vp,reduced_motion=reduce);errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
-  page.set_content((root/'preview.html').read_text());page.locator('#open-button').click();page.locator('#experience[data-phase=reading]').wait_for(timeout=6000)
+  page.set_content((root/'preview.html').read_text());page.locator('#entry-code').fill('DEMO2027');page.locator('#open-button').click();page.locator('#experience[data-phase=reading]').wait_for(timeout=6000)
   assert page.locator('[data-cine]').count()==12
   assert page.locator('#experience').get_attribute('data-cinematic')==('off' if reduce=='reduce' else 'on')
   if reduce!='reduce':
