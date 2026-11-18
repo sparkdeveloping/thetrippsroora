@@ -1,3 +1,5 @@
+import { postInvitationApi } from './request.mjs';
+
 export function mountReply(ctx) {
   const { root, $, on, signal } = ctx, demo = root.dataset.mode === 'demo';
   const verify = $('verify-form'), form = $('rsvp-form');
@@ -15,11 +17,7 @@ export function mountReply(ctx) {
       }
       return { reference: 'PREVIEW-2027', demo: true };
     }
-    const response = await fetch(`/api/${path}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.any([signal, AbortSignal.timeout(12000)]), cache: 'no-store' });
-    let result;
-    try { result = await response.json(); } catch { throw Error('The service is temporarily unavailable. Please try again.'); }
-    if (!response.ok) throw Error(result.error || 'Unable to complete your request.');
-    return result;
+    return postInvitationApi(path, body, { signal });
   }
   function attendance() {
     const yes = form.querySelector('[name=attendance]:checked')?.value === 'yes';
@@ -67,7 +65,7 @@ export function mountReply(ctx) {
       $('confirmed-heading').textContent = yes ? 'We look forward to seeing you.' : 'Thank you for letting us know.';
       $('confirmed-message').textContent = demo ? 'This is a simulated confirmation. No guest information was sent or saved.' : yes ? 'Your attendance has been recorded. The organizers will share further details with confirmed guests.' : 'Your response has been recorded. Thank you for being part of our story.';
       $('confirmed-reference').textContent = `REFERENCE / ${result.reference}`; $('edit-rsvp').hidden = invitation.allowUpdates === false;
-      $('confirmation').focus({ preventScroll: true });
+      $('confirmation').focus();
       if (ctx.moving()) ctx.animate($('confirmation').querySelector('.confirmed-seal'), [{ transform: 'scale(.82) rotate(-12deg)', opacity: 0 }, { transform: 'scale(1) rotate(0)', opacity: 1 }], { duration: 640, fill: 'none' });
       $('rsvp-status').textContent = '';
     } catch (e) { if (!signal.aborted) $('rsvp-status').textContent = description(e); }

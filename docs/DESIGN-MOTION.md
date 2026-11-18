@@ -41,7 +41,7 @@ Each look is a small local crop. Native horizontal snapping, mouse dragging, arr
 
 Runways are reversible. Geometry reads are batched before scene writes; the engine caches scene geometry and queries. It sleeps when settled or hidden. Toolbar or keyboard height changes during field entry do not rebuild the scene rig. Device orientation is opt-in through a real user action, and pointer/touch use remains available without it. Permission denial has a readable fallback.
 
-The OS preference and persistent guest motion toggle disable nonessential motion. On short viewports (under 620px high) the album and calendar use a linear composition that leaves reading and controls in normal document flow. This is a height/legibility adaptation, not a blanket mobile-width shutdown. Physical Safari sensor quality, thermal behavior and GPU rendering still require device testing.
+The OS preference and persistent guest motion toggle disable nonessential motion. At enlarged root text sizes (150% or greater), cinematic scenes reflow into a complete linear layout. On short viewports (under 620px high) the album and calendar use a linear composition that leaves reading and controls in normal document flow. This is a height/legibility adaptation, not a blanket mobile-width shutdown. Physical Safari sensor quality, thermal behavior and GPU rendering still require device testing.
 
 ## Research applied
 
@@ -50,3 +50,5 @@ The OS preference and persistent guest motion toggle disable nonessential motion
 - [MDN orientation permission](https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent/requestPermission_static): sensor access is initiated by user activation.
 - [web.dev animation performance](https://web.dev/articles/animations-and-performance): transforms and opacity carry major movement. The calendar's small surface also interpolates color/radius; its real-device paint cost remains to be profiled.
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [interaction motion guidance](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions): keyboard alternatives, contrast, meaningful focus, target sizes and motion alternatives. Disabling interaction animation goes beyond the AA minimum.
+
+The client request transport uses an AbortController and a cancellable timer, avoiding newer AbortSignal composition APIs beyond the framework’s browser floor. The envelope form is inert in server HTML and becomes usable only after all client handlers are registered.

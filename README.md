@@ -21,6 +21,7 @@ npm test
 npm run assets
 ROORA_DEMO_MODE=1 npm run build
 npm run test:production
+npm run test:integration
 npm run test:performance
 ```
 

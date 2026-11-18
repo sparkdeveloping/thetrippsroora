@@ -10,7 +10,7 @@ export function mountCinema(ctx) {
   let raf = 0, last = 0, dirty = true, initialized = false, lastY = scrollY, velocity = 0, width = innerWidth;
   const canPin = () => ctx.moving() && innerHeight >= 620 && root.dataset.largeType !== 'true';
   function schedule() { if (!raf && !document.hidden && root.dataset.phase === 'reading') raf = ctx.frame(tick); }
-  function refresh() { root.dataset.largeType = String(parseFloat(getComputedStyle(document.documentElement).fontSize) >= 24); dirty = true; accessibility(0); schedule(); }
+  function refresh() { dirty = true; schedule(); }
   function accessibility(active) {
     beats.forEach((beat, i) => {
       const hidden = canPin() && i !== active;
@@ -39,7 +39,12 @@ export function mountCinema(ctx) {
     const y = scrollY, h = document.documentElement.clientHeight || innerHeight, mobile = innerWidth <= 760;
     if (!ctx.moving()) { accessibility(0); initialized = false; last = 0; return; }
     const dt = last ? clamp((now - last) / 1000, .001, .05) : 1 / 60; last = now;
-    if (dirty) measure(y, h);
+    if (dirty) {
+      const large = String(parseFloat(getComputedStyle(document.documentElement).fontSize) >= 24);
+      if (large !== root.dataset.largeType) { root.dataset.largeType = large; accessibility(0); schedule(); return; }
+      measure(y, h);
+    }
+    if (root.dataset.largeType === 'true') { accessibility(0); initialized = false; last = 0; return; }
     const speed = clamp((y - lastY) / dt, -2400, 2400); lastY = y;
     velocity += (speed - velocity) * (1 - Math.exp(-12 * dt));
     let unsettled = Math.abs(velocity) > 5;

@@ -8,7 +8,7 @@ The original Netlify site is untouched. Do not promote this preview or populate 
 
 ## Prepare an isolated live-service rehearsal
 
-The repository's PostgreSQL test runs the real schema in isolated PGlite. It checks allowances, idempotent receipts, update restrictions and denied public access. This is useful database evidence, but is not a hosted Supabase or multi-connection concurrency rehearsal.
+The repository's PostgreSQL test runs the real schema in isolated PGlite. It checks allowances, idempotent receipts, update restrictions and denied public access. The live integration suite additionally sends actual Next.js HTTP requests through a local Supabase-shaped RPC transport into this database, covering acceptance, decline, retries, simultaneous HTTP requests and organizer authorization. This is isolated integration evidence, not a hosted Supabase or multi-connection database concurrency rehearsal.
 
 For a family-approved isolated Supabase project, apply `db/schema.sql` as its owner. Set server-only `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `INVITATION_PEPPER` (at least 32 random characters), and `ADMIN_TOKEN` (at least 32 random characters). Never prefix them `NEXT_PUBLIC_`. Keep demo mode enabled on ordinary reviews; enable live behavior only in the approved isolated rehearsal environment. Do not copy real guest records into a test project.
 

@@ -18,7 +18,7 @@ export function mountGallery(ctx) {
   for (const gallery of root.querySelectorAll('.look-gallery')) {
     const track = gallery.querySelector('.look-track'), slides = [...track.children], scrub = gallery.querySelector('.look-scrub');
     const prev = gallery.querySelector('.look-prev'), next = gallery.querySelector('.look-next'), label = gallery.querySelector('.look-index');
-    let selected = 0, raf = 0, positions = [], dragging = false, origin = 0, start = 0;
+    let selected = 0, raf = 0, resizeFrame = 0, positions = [], dragging = false, origin = 0, start = 0;
     function measure() { positions = slides.map(s => s.offsetLeft + s.offsetWidth / 2 - track.clientWidth / 2); }
     function update(i) {
       selected = i; scrub.value = String(i); scrub.setAttribute('aria-valuetext', `Style ${String.fromCharCode(65 + i)}: ${slides[i].querySelector('h3').textContent}`);
@@ -36,7 +36,7 @@ export function mountGallery(ctx) {
     on(track, 'pointermove', e => { if (dragging) track.scrollLeft = start + origin - e.clientX; });
     const stop = () => { if (!dragging) return; dragging = false; delete track.dataset.dragging; go(selected); };
     on(track, 'pointerup', stop); on(track, 'pointercancel', stop);
-    if ('ResizeObserver' in window) { const observer = new ResizeObserver(() => { measure(); if (!gallery.closest('[hidden]')) go(selected, false); }); observer.observe(track); ctx.cleanup(() => observer.disconnect()); }
+    if ('ResizeObserver' in window) { const observer = new ResizeObserver(() => { if (resizeFrame) return; resizeFrame = ctx.frame(() => { resizeFrame = 0; measure(); if (!gallery.closest('[hidden]')) go(selected, false); }); }); observer.observe(track); ctx.cleanup(() => observer.disconnect()); }
     update(0);
   }
   const dialog = $('image-dialog'); let opener;

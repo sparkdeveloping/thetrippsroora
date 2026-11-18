@@ -14,7 +14,8 @@
     "assets": "node scripts/check-assets.mjs",
     "looks": "node scripts/prepare-looks.mjs",
     "test:production": "node tests/run-production.mjs",
-    "test:performance": "node tests/run-production.mjs --lighthouse"
+    "test:performance": "node tests/run-production.mjs --lighthouse",
+    "test:integration": "node tests/live-integration.mjs"
   },
   "dependencies": {
     "next": "16.4.6",
