@@ -44,7 +44,7 @@ export function mountCinema(ctx) {
       if (large !== root.dataset.largeType) { root.dataset.largeType = large; accessibility(0); schedule(); return; }
       measure(y, h);
     }
-    if (root.dataset.largeType === 'true') { accessibility(0); initialized = false; last = 0; return; }
+    if (root.dataset.largeType === 'true' || h < 620) { accessibility(0); initialized = false; last = 0; return; }
     const speed = clamp((y - lastY) / dt, -2400, 2400); lastY = y;
     velocity += (speed - velocity) * (1 - Math.exp(-12 * dt));
     let unsettled = Math.abs(velocity) > 5;
