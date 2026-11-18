@@ -1,0 +1,9 @@
+(async()=>{
+const slots={'story-meeting':/Natalie and Jordan dancing beside a lake/i,'story-promise':/Natalie and Jordan embracing beside a lake/i,'story-homecoming':/Natalie and Jordan standing arm in arm beneath magnolia/i,'closing-portrait':/Natalie and Jordan standing together in a garden walkway/i,'attire-women':/olive.green skirt set styles for women/i,'attire-men':/olive.green outfit styles for men/i};
+const files={},errors=[];
+for(const [name,pattern] of Object.entries(slots)){
+const img=[...document.images].find(i=>pattern.test(i.alt));if(!img){errors.push(name);continue;}
+try{const url=img.currentSrc||img.src||img.dataset.src;if(!url)throw Error('Missing source');let bitmap;try{const res=await fetch(url);if(!res.ok)throw Error(res.status);bitmap=await createImageBitmap(await res.blob());}catch{await img.decode();bitmap=img;}const w=bitmap.naturalWidth||bitmap.width,h=bitmap.naturalHeight||bitmap.height,scale=Math.min(1,(name.startsWith('attire')?2000:1600)/Math.max(w,h));const canvas=document.createElement('canvas');canvas.width=Math.round(w*scale);canvas.height=Math.round(h*scale);canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);const data=canvas.toDataURL('image/webp',.9);if(!data.startsWith('data:image/webp;base64,'))throw Error('WebP unavailable');files[name]=data;bitmap.close?.();console.log('Saved',name);}catch(e){errors.push(name+': '+e.message);}
+}
+const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({version:1,files})],{type:'application/json'}));a.download='roora-photos.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),30000);console.log('Exported '+Object.keys(files).length+'/6 originals.',errors);if(errors.length)alert('Some photos could not be exported: '+errors.join(', '));else alert('All six originals exported. Move roora-photos.json into the Next.js project folder.');
+})();
