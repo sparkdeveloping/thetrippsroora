@@ -12,3 +12,5 @@
 @media(max-height:740px) and (min-height:620px){.album-stage{padding-top:76px;padding-bottom:20px}.album-header h2{font-size:2.1rem}.album-note{margin-bottom:10px}.album-frame .photo img,.album-frame .photo-fallback{height:30svh}.album-beat{gap:14px}.album-copy p{font-size:.95rem}.calendar-stage{gap:14px}.calendar-book{max-width:265px}.calendar-headline{font-size:1.8rem}}
 
 .letter-center,.letter-center h2{max-width:100%;min-width:0}.calendar-month span:first-child{min-width:0;overflow-wrap:anywhere}.footer-top{flex-wrap:wrap}#experience[data-large-type=true] .choices{flex-direction:column}#experience[data-large-type=true] .ticket-date strong{font-size:5rem}
+
+#experience[data-large-type=true] .heritage-word{font-size:min(6rem,28vw)}
