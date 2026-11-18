@@ -34,3 +34,5 @@
 
 #experience[data-cinematic=off] .calendar-selected:after,#experience[data-large-type=true] .calendar-selected:after{content:"01";display:grid;place-items:center;width:100%;height:100%;background:var(--olive);color:var(--ivory);border-radius:50%}
 @media(max-height:619px){.calendar-selected:after{content:"01";display:grid;place-items:center;width:100%;height:100%;background:var(--olive);color:var(--ivory);border-radius:50%}}
+
+#experience[data-cinematic=off] .chapter-dock{transform:none}

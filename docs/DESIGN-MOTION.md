@@ -41,7 +41,7 @@ Each look is a small local crop. Native horizontal snapping, mouse dragging, arr
 
 Runways are reversible. Geometry reads are batched before scene writes; the engine caches scene geometry and queries. It sleeps when settled or hidden. Toolbar or keyboard height changes during field entry do not rebuild the scene rig. Device orientation is opt-in through a real user action, and pointer/touch use remains available without it. Permission denial has a readable fallback.
 
-The OS preference and persistent guest motion toggle disable nonessential motion. At enlarged root text sizes (150% or greater), cinematic scenes reflow into a complete linear layout. On short viewports (under 620px high) the album and calendar use a linear composition that leaves reading and controls in normal document flow. This is a height/legibility adaptation, not a blanket mobile-width shutdown. Physical Safari sensor quality, thermal behavior and GPU rendering still require device testing.
+The OS preference and persistent guest motion controls in the chapter navigator and footer disable nonessential motion. At enlarged root text sizes (150% or greater), cinematic scenes reflow into a complete linear layout. On short viewports (under 620px high) the album and calendar use a linear composition that leaves reading and controls in normal document flow. This is a height/legibility adaptation, not a blanket mobile-width shutdown. Physical Safari sensor quality, thermal behavior and GPU rendering still require device testing.
 
 ## Research applied
 

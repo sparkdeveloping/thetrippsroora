@@ -5,3 +5,5 @@ dialog{border:1px solid var(--gold);padding:16px;max-width:94vw;max-height:94svh
 @media(max-width:760px){.chapter-nav{top:calc(env(safe-area-inset-top,0px) + 16px);right:calc(env(safe-area-inset-right,0px) + 12px);max-width:calc(100vw - 24px)}#chapter-toggle{min-height:44px;padding:0 11px;gap:7px}.dock-count{font-size:.6rem}.dock-label{font-size:.8rem}.nav-links{width:min(250px,calc(100vw - 24px))}}
 
 .chapter-dock:focus-within{outline:3px solid #916326;outline-offset:4px}
+
+.nav-motion{min-height:44px;padding:12px 10px;background:none;border:0;border-top:1px solid var(--line);text-align:left;color:var(--olive);font-size:.875rem}

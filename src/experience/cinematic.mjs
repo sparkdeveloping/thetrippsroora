@@ -7,7 +7,7 @@ export function mountCinema(ctx) {
   const album = items.find(a => a.kind === 'album');
   const beats = [...album.el.querySelectorAll('.album-beat')], meters = [...album.el.querySelectorAll('.album-meter i')];
   const union = root.querySelector('.union-art'), calendar = root.querySelector('.calendar-runway');
-  let raf = 0, last = 0, dirty = true, initialized = false, lastY = scrollY, velocity = 0, width = innerWidth;
+  let raf = 0, last = 0, dirty = true, initialized = false, lastY = scrollY, velocity = 0, width = innerWidth, activeBeat = 0;
   const canPin = () => ctx.moving() && innerHeight >= 620 && root.dataset.largeType !== 'true';
   function schedule() { if (!raf && !document.hidden && root.dataset.phase === 'reading') raf = ctx.frame(tick); }
   function refresh() { dirty = true; schedule(); }
@@ -31,6 +31,7 @@ export function mountCinema(ctx) {
     const date = { x: c.left + c.width / 2 - b.left - b.width / 2, y: c.top + c.height / 2 - b.top - b.height / 2, sx: c.width / b.width, sy: c.height / b.height };
     calendar.style.setProperty('--cal-x', `${date.x}px`); calendar.style.setProperty('--cal-y', `${date.y}px`);
     calendar.style.setProperty('--cal-sx', date.sx); calendar.style.setProperty('--cal-sy', date.sy);
+    accessibility(activeBeat);
     dirty = false;
   }
   function tick(now) {
@@ -88,7 +89,7 @@ export function mountCinema(ctx) {
         beat.style.setProperty('--copy-y', `${(delta * 18).toFixed(2)}px`);
         meters[i].style.opacity = String(.3 + .7 * opacity);
       });
-      a.el.style.setProperty('--album-progress', `${p * 100}%`); accessibility(Math.round(scene));
+      a.el.style.setProperty('--album-progress', `${p * 100}%`); activeBeat = Math.round(scene); accessibility(activeBeat);
     }
     if (a.kind === 'calendar') a.el.style.setProperty('--cal-lift', smooth((p - .24) / .57).toFixed(4));
   }

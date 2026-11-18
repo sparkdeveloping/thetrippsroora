@@ -32,7 +32,7 @@ export function mountNavigation(ctx) {
   on(toggle, 'pointermove', e => { if (e.pointerType !== 'mouse' || !panel.hidden) return; const r = toggle.getBoundingClientRect(); magnet([clamp((e.clientX - r.left - r.width / 2) * .12, -6, 6), clamp((e.clientY - r.top - r.height / 2) * .18, -4, 4), 1]); });
   on(toggle, 'pointerleave', () => magnet()); on(toggle, 'pointerdown', () => magnet([0, 4, .975]));
   on(toggle, 'pointerup', () => magnet()); on(toggle, 'pointercancel', () => magnet());
-  on(root, 'motionchange', () => magnet()); on(root, 'phasechange', () => { if (root.dataset.phase !== 'reading') setOpen(false); });
+  on(root, 'motionchange', () => { animation?.cancel(); magnet(); }); on(root, 'phasechange', () => { if (root.dataset.phase !== 'reading') setOpen(false); });
   let progressFrame = 0, positions = [], current = -1;
   function measure() { positions = sections.map(s => s.getBoundingClientRect().top + scrollY); progress(); }
   function progress() {

@@ -24,13 +24,15 @@ export function mountExperience(root) {
   };
   function syncMotion() {
     root.dataset.cinematic = ctx.moving() ? 'on' : 'off';
-    const toggle = ctx.$('cinematic-toggle');
-    toggle.hidden = false; toggle.disabled = ctx.reduced.matches;
-    toggle.setAttribute('aria-pressed', String(!ctx.moving()));
-    toggle.textContent = ctx.reduced.matches ? 'Motion reduced by your device' : ctx.moving() ? 'Reduce motion' : 'Enable cinematic motion';
+    for (const toggle of [ctx.$('cinematic-toggle'), ctx.$('nav-motion')]) {
+      toggle.hidden = false; toggle.disabled = ctx.reduced.matches;
+      toggle.setAttribute('aria-pressed', String(!ctx.moving()));
+      toggle.textContent = ctx.reduced.matches ? 'Motion reduced by your device' : ctx.moving() ? 'Reduce motion' : 'Enable cinematic motion';
+    }
     root.dispatchEvent(new Event('motionchange'));
   }
-  ctx.on(ctx.$('cinematic-toggle'), 'click', () => { reducedByGuest = !reducedByGuest; try { localStorage.setItem('cinematic-reduced', reducedByGuest ? '1' : '0'); } catch {} syncMotion(); });
+  const changeMotion = () => { reducedByGuest = !reducedByGuest; try { localStorage.setItem('cinematic-reduced', reducedByGuest ? '1' : '0'); } catch {} syncMotion(); };
+  ctx.on(ctx.$('cinematic-toggle'), 'click', changeMotion); ctx.on(ctx.$('nav-motion'), 'click', changeMotion);
   ctx.on(ctx.reduced, 'change', syncMotion);
   syncMotion();
   const reply = mountReply(ctx);

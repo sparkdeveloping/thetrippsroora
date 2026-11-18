@@ -1,10 +1,14 @@
 import { clamp, springStep, motion } from './motion.mjs';
 
+export function openingViewportChanged(before, after, touch) {
+  return Math.abs(before.width - after.width) > 2 || (!touch && Math.abs(before.height - after.height) > 2);
+}
+
 export function mountEnvelope(ctx, reply) {
   const { root, $, on } = ctx;
   const envelope = $('envelope'), stage = $('stage'), entry = $('unlock-form'), input = $('entry-code');
   const arrival = $('arrival'), sensor = $('motion-button'), paper = root.querySelector('.letter-inner'), hero = $('invitation');
-  let run = 0, flight = null, raf = 0, last = 0, orientationActive = false, baseline = null;
+  let run = 0, flight = null, raf = 0, last = 0, orientationActive = false, baseline = null, openingViewport;
   let current = [0, 0], velocity = [0, 0], target = [0, 0];
   const activeAnimations = new Set();
   const sealed = () => root.dataset.phase === 'sealed';
@@ -64,7 +68,7 @@ export function mountEnvelope(ctx, reply) {
   }
   function animate(el, frames, options) { const a = ctx.animate(el, frames, options); activeAnimations.add(a); return a; }
   async function opening() {
-    const id = ++run; ctx.setPhase('opening'); input.blur(); stopSensor(); sensor.hidden = true;
+    const id = ++run; openingViewport = { width: innerWidth, height: innerHeight }; ctx.setPhase('opening'); input.blur(); stopSensor(); sensor.hidden = true;
     if (!ctx.moving() || !Element.prototype.animate) { finish(); return; }
     document.body.style.overflow = 'hidden';
     const flap = $('flap'), card = envelope.querySelector('.env-letter');
@@ -107,7 +111,7 @@ export function mountEnvelope(ctx, reply) {
     history.replaceState(null, '', location.pathname + location.search); window.scrollTo({ top: 0, behavior: 'instant' }); input.focus({ preventScroll: true });
   }
   on($('replay'), 'click', reset);
-  on(window, 'resize', () => { baseline = null; if (['opening', 'unfolding'].includes(root.dataset.phase)) { run++; finish(); } });
+  on(window, 'resize', () => { baseline = null; const touch = matchMedia('(pointer:coarse)').matches || navigator.maxTouchPoints > 0; if (['opening', 'unfolding'].includes(root.dataset.phase) && openingViewportChanged(openingViewport, { width: innerWidth, height: innerHeight }, touch)) { run++; finish(); } });
   on(root, 'motionchange', () => { if (!ctx.moving()) { stopSensor(); if (['opening', 'unfolding'].includes(root.dataset.phase)) { run++; finish(); } } setupSensor(); });
   on(document, 'visibilitychange', () => { baseline = null; if (document.hidden && raf) { ctx.cancel(raf); raf = 0; last = 0; } });
   ctx.cleanup(() => { run++; cancelAnimations(); restorePaper(); stopSensor(); }); setupSensor();
