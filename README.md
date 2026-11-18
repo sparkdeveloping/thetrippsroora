@@ -1,3 +1,40 @@
+# The Letter Home V4 — The Living Album
+
+V4 replaces the old chapter menu and story layout with a pinned, reversible photo narrative. It retains the V3.1 invitation gate, hosted demo mode, RSVP backend and organizer dashboard. The earlier implementation notes below are historical where they conflict with this section.
+
+## Start / deploy
+
+```sh
+npm install
+npm run assets  # pulls the six approved originals from Netlify if accessible
+npm run dev
+```
+
+`npm run build` automatically attempts the same asset import before `next build`; the asset import is optional at build time so a temporary Netlify failure does not stop deployment. For Vercel, keep `ROORA_DEMO_MODE=1` while testing; `DEMO2027` opens the invitation and simulates RSVPs. Set it to 0 and configure the real backend before inviting guests. Do not overwrite your existing environment secrets.
+
+## Motion design
+
+- One damped-spring model drives envelope tilt, the scroll control rig, and the magnetic navigation. It tracks position and velocity with an analytical, frame-rate-independent oscillator; no timer-based scroll hijacking.
+- The letter is briefly pinned and recedes as the user scrolls. The opening flight uses compositor transforms with a restrained settling overshoot.
+- The story is a single three-beat sticky stage. The scroll range holds the current memory, transitions to the next with coordinated rotation and offset, then holds again. It reverses naturally and releases at the end.
+- The desktop heritage scene also uses a sticky runway; mobile heritage remains readable without locking the viewport. The existing event, fabric, RSVP and footer effects are preserved.
+- The new named chapter dock uses a magnetic pointer response, compression on press, an expanding/collapsing chapter panel, Escape and outside-click dismissal, accessible anchor links and a reading-progress indicator. No hamburger or decorative emoji.
+- OS reduced motion and the in-site motion toggle flatten the pinned album into a normal reading layout. Native scroll remains authoritative.
+
+## Original images
+
+See `public/media/README.md`. The original browser supplied the image descriptions for four couple images and two outfit boards, but stripped the actual image URLs. The sandbox cannot resolve the Netlify domain. No photo bytes are included. The importer matches the actual original image descriptions, validates same-origin URLs, and optimizes them with Sharp. If the page is client-rendered, use the documented browser manifest method. Successful imports are picked up automatically in both demo and live mode. The standalone preview embeds imported images when regenerated using `npm run preview`.
+
+## Verification
+
+- `npm test`: 10 passed (including mocked API, demo isolation, validation and exact-match asset parser).
+- `python tests/browser-check.py`: three Chromium viewport configurations passed opening, attendance and replay tests.
+- `python tests/cinematic-check.py`: four Chromium viewport configurations passed, including pinned position, all three beats, reverse scrolling, content bounds, chapter navigation and reduced-motion fallback.
+- These are standalone preview browser tests, not a verified Next.js production build. Physical iOS/Safari motion, original-file downloads, real Web Vitals and Supabase integration remain unverified. The supplied project is not deployed to Vercel by this package.
+
+---
+## Previous implementation notes
+
 # The Letter Home — Natalie & Jordan / V2 Cinematic Edition
 
 An original, mobile-first Next.js invitation. The arrival is a material object, the opening is a continuous shift from envelope to letter, the story leads to cultural understanding, and the event details ultimately lead to a reply card. An accessible utility path bypasses the opening. This is a private invitation design, not a launched event.
