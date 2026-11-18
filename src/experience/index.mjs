@@ -8,10 +8,14 @@ import { mountMedia } from './media.mjs';
 
 export function mountExperience(root) {
   const ctx = createScope(root);
+  ctx.metrics = { openingMilliseconds: null };
+  let openingStart = 0;
   let reducedByGuest = false;
   try { reducedByGuest = localStorage.getItem('cinematic-reduced') === '1'; } catch {}
   ctx.moving = () => !ctx.reduced.matches && !reducedByGuest;
   ctx.setPhase = phase => {
+    if (phase === 'opening') openingStart = performance.now();
+    if (phase === 'reading' && openingStart) { ctx.metrics.openingMilliseconds = performance.now() - openingStart; openingStart = 0; }
     root.dataset.phase = phase;
     ctx.$('letter').inert = phase !== 'reading';
     root.querySelector('footer').inert = phase !== 'reading';
