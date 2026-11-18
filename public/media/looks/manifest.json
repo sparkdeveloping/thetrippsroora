@@ -1,0 +1,282 @@
+[
+  {
+    "file": "women-a.webp",
+    "width": 239,
+    "height": 522,
+    "bytes": 34182,
+    "source": "attire-women.webp",
+    "sourceSHA256": "6c1f135279764fa98235b95ec9c30e6197cb8b497212205679806913f2399589",
+    "crop": {
+      "left": 2,
+      "top": 108,
+      "width": 239,
+      "height": 522
+    }
+  },
+  {
+    "file": "women-b.webp",
+    "width": 232,
+    "height": 522,
+    "bytes": 32068,
+    "source": "attire-women.webp",
+    "sourceSHA256": "6c1f135279764fa98235b95ec9c30e6197cb8b497212205679806913f2399589",
+    "crop": {
+      "left": 244,
+      "top": 108,
+      "width": 232,
+      "height": 522
+    }
+  },
+  {
+    "file": "women-c.webp",
+    "width": 235,
+    "height": 522,
+    "bytes": 35828,
+    "source": "attire-women.webp",
+    "sourceSHA256": "6c1f135279764fa98235b95ec9c30e6197cb8b497212205679806913f2399589",
+    "crop": {
+      "left": 479,
+      "top": 108,
+      "width": 235,
+      "height": 522
+    }
+  },
+  {
+    "file": "women-d.webp",
+    "width": 233,
+    "height": 522,
+    "bytes": 31008,
+    "source": "attire-women.webp",
+    "sourceSHA256": "6c1f135279764fa98235b95ec9c30e6197cb8b497212205679806913f2399589",
+    "crop": {
+      "left": 718,
+      "top": 108,
+      "width": 233,
+      "height": 522
+    }
+  },
+  {
+    "file": "women-e.webp",
+    "width": 242,
+    "height": 522,
+    "bytes": 34604,
+    "source": "attire-women.webp",
+    "sourceSHA256": "6c1f135279764fa98235b95ec9c30e6197cb8b497212205679806913f2399589",
+    "crop": {
+      "left": 955,
+      "top": 108,
+      "width": 242,
+      "height": 522
+    }
+  },
+  {
+    "file": "women-f.webp",
+    "width": 239,
+    "height": 525,
+    "bytes": 42224,
+    "source": "attire-women.webp",
+    "sourceSHA256": "6c1f135279764fa98235b95ec9c30e6197cb8b497212205679806913f2399589",
+    "crop": {
+      "left": 2,
+      "top": 705,
+      "width": 239,
+      "height": 525
+    }
+  },
+  {
+    "file": "women-g.webp",
+    "width": 232,
+    "height": 525,
+    "bytes": 28906,
+    "source": "attire-women.webp",
+    "sourceSHA256": "6c1f135279764fa98235b95ec9c30e6197cb8b497212205679806913f2399589",
+    "crop": {
+      "left": 244,
+      "top": 705,
+      "width": 232,
+      "height": 525
+    }
+  },
+  {
+    "file": "women-h.webp",
+    "width": 235,
+    "height": 525,
+    "bytes": 36862,
+    "source": "attire-women.webp",
+    "sourceSHA256": "6c1f135279764fa98235b95ec9c30e6197cb8b497212205679806913f2399589",
+    "crop": {
+      "left": 479,
+      "top": 705,
+      "width": 235,
+      "height": 525
+    }
+  },
+  {
+    "file": "women-i.webp",
+    "width": 233,
+    "height": 525,
+    "bytes": 38616,
+    "source": "attire-women.webp",
+    "sourceSHA256": "6c1f135279764fa98235b95ec9c30e6197cb8b497212205679806913f2399589",
+    "crop": {
+      "left": 718,
+      "top": 705,
+      "width": 233,
+      "height": 525
+    }
+  },
+  {
+    "file": "women-j.webp",
+    "width": 242,
+    "height": 525,
+    "bytes": 31090,
+    "source": "attire-women.webp",
+    "sourceSHA256": "6c1f135279764fa98235b95ec9c30e6197cb8b497212205679806913f2399589",
+    "crop": {
+      "left": 955,
+      "top": 705,
+      "width": 242,
+      "height": 525
+    }
+  },
+  {
+    "file": "men-a.webp",
+    "width": 243,
+    "height": 471,
+    "bytes": 23270,
+    "source": "attire-men.webp",
+    "sourceSHA256": "91185805189bf387f79c304e024f46b3f5b7c20c339ea18c35ca97e2721c1703",
+    "crop": {
+      "left": 2,
+      "top": 116,
+      "width": 243,
+      "height": 471
+    }
+  },
+  {
+    "file": "men-b.webp",
+    "width": 242,
+    "height": 471,
+    "bytes": 23914,
+    "source": "attire-men.webp",
+    "sourceSHA256": "91185805189bf387f79c304e024f46b3f5b7c20c339ea18c35ca97e2721c1703",
+    "crop": {
+      "left": 249,
+      "top": 116,
+      "width": 242,
+      "height": 471
+    }
+  },
+  {
+    "file": "men-c.webp",
+    "width": 242,
+    "height": 471,
+    "bytes": 24890,
+    "source": "attire-men.webp",
+    "sourceSHA256": "91185805189bf387f79c304e024f46b3f5b7c20c339ea18c35ca97e2721c1703",
+    "crop": {
+      "left": 494,
+      "top": 116,
+      "width": 242,
+      "height": 471
+    }
+  },
+  {
+    "file": "men-d.webp",
+    "width": 242,
+    "height": 471,
+    "bytes": 18812,
+    "source": "attire-men.webp",
+    "sourceSHA256": "91185805189bf387f79c304e024f46b3f5b7c20c339ea18c35ca97e2721c1703",
+    "crop": {
+      "left": 739,
+      "top": 116,
+      "width": 242,
+      "height": 471
+    }
+  },
+  {
+    "file": "men-e.webp",
+    "width": 234,
+    "height": 471,
+    "bytes": 18054,
+    "source": "attire-men.webp",
+    "sourceSHA256": "91185805189bf387f79c304e024f46b3f5b7c20c339ea18c35ca97e2721c1703",
+    "crop": {
+      "left": 985,
+      "top": 116,
+      "width": 234,
+      "height": 471
+    }
+  },
+  {
+    "file": "men-f.webp",
+    "width": 243,
+    "height": 464,
+    "bytes": 25894,
+    "source": "attire-men.webp",
+    "sourceSHA256": "91185805189bf387f79c304e024f46b3f5b7c20c339ea18c35ca97e2721c1703",
+    "crop": {
+      "left": 2,
+      "top": 687,
+      "width": 243,
+      "height": 464
+    }
+  },
+  {
+    "file": "men-g.webp",
+    "width": 242,
+    "height": 464,
+    "bytes": 27478,
+    "source": "attire-men.webp",
+    "sourceSHA256": "91185805189bf387f79c304e024f46b3f5b7c20c339ea18c35ca97e2721c1703",
+    "crop": {
+      "left": 249,
+      "top": 687,
+      "width": 242,
+      "height": 464
+    }
+  },
+  {
+    "file": "men-h.webp",
+    "width": 242,
+    "height": 464,
+    "bytes": 17484,
+    "source": "attire-men.webp",
+    "sourceSHA256": "91185805189bf387f79c304e024f46b3f5b7c20c339ea18c35ca97e2721c1703",
+    "crop": {
+      "left": 494,
+      "top": 687,
+      "width": 242,
+      "height": 464
+    }
+  },
+  {
+    "file": "men-i.webp",
+    "width": 242,
+    "height": 464,
+    "bytes": 25692,
+    "source": "attire-men.webp",
+    "sourceSHA256": "91185805189bf387f79c304e024f46b3f5b7c20c339ea18c35ca97e2721c1703",
+    "crop": {
+      "left": 739,
+      "top": 687,
+      "width": 242,
+      "height": 464
+    }
+  },
+  {
+    "file": "men-j.webp",
+    "width": 234,
+    "height": 464,
+    "bytes": 30180,
+    "source": "attire-men.webp",
+    "sourceSHA256": "91185805189bf387f79c304e024f46b3f5b7c20c339ea18c35ca97e2721c1703",
+    "crop": {
+      "left": 985,
+      "top": 687,
+      "width": 234,
+      "height": 464
+    }
+  }
+]
