@@ -1,0 +1,29 @@
+
+> the-letter-home@6.0.0 test
+> node --test tests/*.test.mjs
+
+✔ API production contracts using mocked Supabase HTTP (not a database integration test) (21.078017ms)
+✔ six original hashes and all twenty cropped images decode correctly (969.99097ms)
+✔ isolated PostgreSQL schema: allowances, idempotency, updates and denied public access (2831.741658ms)
+✔ hosted demo explicit opt-in, local-only legacy flag (0.928298ms)
+✔ demo deployment cannot call live guest services (5.499082ms)
+✔ spring solution gives the same state at 30, 60 and 120Hz (2.111941ms)
+✔ Zimbabwe countdown changes at local midnight and never becomes negative (19.955291ms)
+✔ keyboard and toolbar height changes preserve touch opening; rotation finishes safely (1.034308ms)
+✔ reply transport preserves idempotency payload and reports service errors (6.445819ms)
+✔ reply transport timeout and lifecycle abort work without AbortSignal.any (5.40453ms)
+✔ request boundary rejects foreign origins, invalid JSON and oversized payloads (7.111902ms)
+✔ normalization and format (0.860967ms)
+✔ acceptance, trimming and required travel (0.296307ms)
+✔ decline clears attendance-only details (0.156646ms)
+✔ rejects invalid input, type mismatches and overlong data (0.605377ms)
+✔ HMAC and organizer auth (0.878423ms)
+✔ live markup contains no demo code or guest information (0.664231ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3092.7423

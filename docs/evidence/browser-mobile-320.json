@@ -1,0 +1,514 @@
+{
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+    "width": 320,
+    "height": 700,
+    "devicePixelRatio": 1,
+    "reducedMotion": false
+  },
+  "laboratoryOnly": true,
+  "navigation": [
+    {
+      "ttfb": 1234.7000000029802,
+      "domContentLoaded": 2014.8999999910593,
+      "load": 2946.7000000029802
+    }
+  ],
+  "paints": [
+    {
+      "name": "first-paint",
+      "time": 2048
+    },
+    {
+      "name": "first-contentful-paint",
+      "time": 2048
+    }
+  ],
+  "openingMilliseconds": 2184,
+  "lcpMilliseconds": 2048,
+  "lcpDetail": {
+    "tag": "H1",
+    "class": "",
+    "renderTime": 2048,
+    "loadTime": 0,
+    "size": 17641,
+    "url": ""
+  },
+  "cls": 0.000587468112244898,
+  "longestObservedInteractionMilliseconds": 2672,
+  "inpFieldMeasurement": "Not available; this is a finite laboratory session.",
+  "frames": {
+    "samples": 0,
+    "medianMilliseconds": null,
+    "p95Milliseconds": null,
+    "over20Milliseconds": 0,
+    "note": "rAF intervals; not proof of GPU presentation or physical-device FPS."
+  },
+  "longTasks": [
+    {
+      "start": 1794.8999999910593,
+      "duration": 90
+    },
+    {
+      "start": 2204.8999999910593,
+      "duration": 75
+    },
+    {
+      "start": 2302.2000000029802,
+      "duration": 122
+    },
+    {
+      "start": 2813.7999999970198,
+      "duration": 67
+    },
+    {
+      "start": 7553.20000000298,
+      "duration": 245
+    },
+    {
+      "start": 7803.899999991059,
+      "duration": 54
+    },
+    {
+      "start": 25705.70000000298,
+      "duration": 166
+    },
+    {
+      "start": 62809.09999999404,
+      "duration": 67
+    },
+    {
+      "start": 63878,
+      "duration": 97
+    },
+    {
+      "start": 63984,
+      "duration": 91
+    },
+    {
+      "start": 64077.29999999702,
+      "duration": 1107
+    },
+    {
+      "start": 65185,
+      "duration": 1351
+    },
+    {
+      "start": 66584.09999999404,
+      "duration": 57
+    },
+    {
+      "start": 66750.70000000298,
+      "duration": 104
+    },
+    {
+      "start": 66855.20000000298,
+      "duration": 104
+    },
+    {
+      "start": 66960.59999999404,
+      "duration": 105
+    },
+    {
+      "start": 67067.39999999106,
+      "duration": 102
+    },
+    {
+      "start": 67170.59999999404,
+      "duration": 104
+    },
+    {
+      "start": 67275.70000000298,
+      "duration": 104
+    },
+    {
+      "start": 67380.59999999404,
+      "duration": 105
+    },
+    {
+      "start": 67492.39999999106,
+      "duration": 100
+    },
+    {
+      "start": 67617.20000000298,
+      "duration": 88
+    },
+    {
+      "start": 67709.09999999404,
+      "duration": 101
+    },
+    {
+      "start": 67825.70000000298,
+      "duration": 89
+    },
+    {
+      "start": 67916.09999999404,
+      "duration": 103
+    },
+    {
+      "start": 68020.09999999404,
+      "duration": 104
+    },
+    {
+      "start": 68125.09999999404,
+      "duration": 102
+    },
+    {
+      "start": 68228.39999999106,
+      "duration": 102
+    },
+    {
+      "start": 68334,
+      "duration": 86
+    },
+    {
+      "start": 68442.39999999106,
+      "duration": 52
+    },
+    {
+      "start": 68567.79999999702,
+      "duration": 67
+    },
+    {
+      "start": 68769.5,
+      "duration": 57
+    },
+    {
+      "start": 68886.39999999106,
+      "duration": 65
+    },
+    {
+      "start": 69842.39999999106,
+      "duration": 98
+    },
+    {
+      "start": 69984,
+      "duration": 62
+    },
+    {
+      "start": 70367.5,
+      "duration": 104
+    },
+    {
+      "start": 70484.09999999404,
+      "duration": 98
+    },
+    {
+      "start": 70896.29999999702,
+      "duration": 104
+    },
+    {
+      "start": 71142.29999999702,
+      "duration": 72
+    },
+    {
+      "start": 71267.39999999106,
+      "duration": 53
+    },
+    {
+      "start": 71375.79999999702,
+      "duration": 50
+    },
+    {
+      "start": 86559.20000000298,
+      "duration": 104
+    },
+    {
+      "start": 87208.20000000298,
+      "duration": 67
+    },
+    {
+      "start": 87276,
+      "duration": 382
+    },
+    {
+      "start": 88641.5,
+      "duration": 151
+    }
+  ],
+  "errors": [],
+  "missingLoadedImages": [],
+  "checks": [
+    {
+      "name": "Navigation hidden state follows reading phase",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Album 1: album,0.1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Album 2: album,0.48",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Album 3: album,0.94",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Album 1: album,0.1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Calendar reversible: calendar,0.05",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "Calendar reversible: calendar,0.94",
+      "pass": true,
+      "detail": "0.9938"
+    },
+    {
+      "name": "Calendar reversible: calendar,0.05",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "Single shared date number",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "women gallery style 1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "women gallery style 5",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "women gallery style 10",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "women ten local look files",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "men gallery style 1",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "men gallery style 5",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "men gallery style 10",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "men ten local look files",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Document has no horizontal overflow",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "No uncaught errors",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "accessibility": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 90
+      }
+    ],
+    "passes": 26
+  },
+  "resources": [
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/002ugggfotvf2.css",
+      "duration": 243.70000000298023,
+      "transferSize": 10883
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/1q6rqvg3wqq2q.js",
+      "duration": 101,
+      "transferSize": 6485
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/turbopack-3xd-7z66s-4wg.js",
+      "duration": 180,
+      "transferSize": 4389
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/3zjzr6b7_2o_n.js",
+      "duration": 224.29999999701977,
+      "transferSize": 73477
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/1a83kuk0asdxk.js",
+      "duration": 448.09999999403954,
+      "transferSize": 50739
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/0d1lhi81xe61z.js",
+      "duration": 168.1000000089407,
+      "transferSize": 9521
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/3sav3yefleyvp.js",
+      "duration": 177.79999999701977,
+      "transferSize": 3951
+    },
+    {
+      "url": "https://vercel.live/_next-live/feedback/feedback.js",
+      "duration": 323.80000001192093,
+      "transferSize": 0
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/1aqjvtwysorwn.js",
+      "duration": 114.5,
+      "transferSize": 3828
+    },
+    {
+      "url": "https://vercel.live/_next-live/feedback/feedback.html?dpl=dpl_6Ah2mpyv7uA4uK3gmbJKHgCtodCD",
+      "duration": 372.20000000298023,
+      "transferSize": 0
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/.well-known/vercel/jwe",
+      "duration": 73.79999999701977,
+      "transferSize": 1160
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/favicon.ico",
+      "duration": 234.3999999910593,
+      "transferSize": 2651
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/story-meeting.webp",
+      "duration": 316.09999999403954,
+      "transferSize": 134210
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/story-promise.webp",
+      "duration": 294.3999999910593,
+      "transferSize": 162832
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/story-homecoming.webp",
+      "duration": 356.40000000596046,
+      "transferSize": 289172
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/?qa=1",
+      "duration": 77.8999999910593,
+      "transferSize": 300
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/_next/static/immutable/chunks/3oa8i7p9wz59q.js",
+      "duration": 158.79999999701977,
+      "transferSize": 188408
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/women-a.webp",
+      "duration": 291.79999999701977,
+      "transferSize": 34482
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/women-b.webp",
+      "duration": 249,
+      "transferSize": 32368
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/women-d.webp",
+      "duration": 199.70000000298023,
+      "transferSize": 31308
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/women-e.webp",
+      "duration": 252.90000000596046,
+      "transferSize": 34904
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/women-c.webp",
+      "duration": 295.79999999701977,
+      "transferSize": 36128
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/attire-women.webp",
+      "duration": 410.20000000298023,
+      "transferSize": 420744
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/men-a.webp",
+      "duration": 305.40000000596046,
+      "transferSize": 23570
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/men-b.webp",
+      "duration": 163.6000000089407,
+      "transferSize": 24214
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/men-e.webp",
+      "duration": 203.29999999701977,
+      "transferSize": 18354
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/men-c.webp",
+      "duration": 326.70000000298023,
+      "transferSize": 25190
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/men-d.webp",
+      "duration": 334.79999999701977,
+      "transferSize": 19112
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/attire-men.webp",
+      "duration": 301.8999999910593,
+      "transferSize": 311852
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/men-f.webp",
+      "duration": 172.59999999403954,
+      "transferSize": 26194
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/men-h.webp",
+      "duration": 128.69999998807907,
+      "transferSize": 17784
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/men-g.webp",
+      "duration": 158.8999999910593,
+      "transferSize": 27778
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/men-i.webp",
+      "duration": 178.79999999701977,
+      "transferSize": 25992
+    },
+    {
+      "url": "https://thetrippsroora-behwipwli-sparkdevelopings-projects.vercel.app/media/looks/men-j.webp",
+      "duration": 331.90000000596046,
+      "transferSize": 30480
+    }
+  ]
+}

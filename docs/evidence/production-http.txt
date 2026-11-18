@@ -1,0 +1,10 @@
+
+> the-letter-home@6.0.0 test:production
+> node tests/run-production.mjs
+
+▲ Next.js 16.4.6
+- Local:         http://127.0.0.1:3016
+- Network:       http://127.0.0.1:3016
+✓ Ready in 103ms
+✓ Running next.config.mjs took 12ms
+31 actual Next.js HTTP and binary-asset checks passed.

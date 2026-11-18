@@ -1,0 +1,32 @@
+
+> the-letter-home@6.0.0 build
+> node scripts/check-assets.mjs && next build
+
+6 approved original hashes and 20 decoded outfit crops verified.
+▲ Next.js 16.4.6 (Turbopack)
+✓ Running next.config.mjs took 16ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 147ms
+  Running TypeScript ...
+  Finished TypeScript in 1ms ...
+  Collecting page data using 8 workers ...
+  Generating static pages using 8 workers (0/6) ...
+  Generating static pages using 8 workers (1/6) 
+  Generating static pages using 8 workers (2/6) 
+  Generating static pages using 8 workers (4/6) 
+✓ Generating static pages using 8 workers (6/6) in 450ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ○ /admin
+├ ƒ /api/admin
+├ ƒ /api/invitation
+└ ƒ /api/rsvp
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

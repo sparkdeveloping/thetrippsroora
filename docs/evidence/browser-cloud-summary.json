@@ -1,0 +1,30 @@
+{
+  "commit": "eb8c824ed6a47a03c5113ef0961aeca8ecac2d31",
+  "browser": "Linux Chromium 156",
+  "viewport": {
+    "width": 1363,
+    "height": 936,
+    "devicePixelRatio": 1
+  },
+  "cache": "Warm reload; static resources were already cached.",
+  "lcpMilliseconds": 300,
+  "cls": 7.2445509800774e-05,
+  "openingMilliseconds": 2160.2999999998137,
+  "longestObservedInteractionMilliseconds": 56,
+  "frames": {
+    "samples": 3663,
+    "medianMilliseconds": 16.7,
+    "p95Milliseconds": 16.7,
+    "over20Milliseconds": 1
+  },
+  "checksPassed": 20,
+  "checksTotal": 20,
+  "unintendedMissingImages": 0,
+  "uncaughtApplicationErrors": 0,
+  "intentionalFault": "One deliberately missing image returned 404; an accessible fallback appeared and the original then reloaded successfully.",
+  "limits": [
+    "rAF intervals do not establish GPU presentation or physical-device FPS.",
+    "Finite observed interaction duration is not field INP.",
+    "Lighthouse could not launch in the execution sandbox."
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "applicationCommit": "960608eb916b884f42c15b79129c19ddb9b4bfec",
+  "deploymentId": "dpl_FTUoxvrJEK6gBybrccEohNKiCUbC",
+  "browser": "Linux Chromium 156",
+  "laboratoryOnly": true,
+  "normal": {
+    "width": 1363,
+    "height": 936,
+    "rootFontSize": "16px",
+    "passed": 19,
+    "total": 19,
+    "errors": [],
+    "openingMilliseconds": 2144.199999999255,
+    "cls": 7.2445509800774e-05
+  },
+  "short": {
+    "width": 340,
+    "height": 234,
+    "browserZoom": "400%",
+    "rootFontSize": "16px",
+    "passed": 19,
+    "total": 19,
+    "errors": []
+  },
+  "enlargedText": {
+    "width": 340,
+    "height": 234,
+    "browserZoom": "400%",
+    "rootFontSize": "32px (200%)",
+    "passed": 19,
+    "total": 19,
+    "errors": []
+  },
+  "guestReducedMotion": {
+    "width": 1363,
+    "height": 936,
+    "passed": 19,
+    "total": 19,
+    "errors": [],
+    "bothControlsPressed": true,
+    "allAlbumBeatsExposed": true,
+    "restoreNormalExposesOneBeat": true
+  },
+  "axe": {
+    "violations": [],
+    "passes": 26,
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodes": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodes": 78
+      }
+    ]
+  },
+  "invalidCode": {
+    "sealed": true,
+    "message": "That invitation code was not recognized."
+  },
+  "decline": {
+    "focused": "confirmation",
+    "top": 83.859375,
+    "bottom": 434.71875,
+    "viewportHeight": 936,
+    "heading": "Thank you for letting us know.",
+    "explicitSimulationLabel": true
+  },
+  "excludedLCP": {
+    "milliseconds": 936,
+    "reason": "LCP identified the Cloud Browser-injected chrome-extension cursor-chat.png image, not a product element."
+  },
+  "limitations": [
+    "No physical phones, field INP or valid cold mobile LCP.",
+    "Browser zoom is not mobile device emulation.",
+    "Complete screenshot/recording export not available."
+  ],
+  "acceptance": {
+    "focused": "confirmation",
+    "top": 220.859375,
+    "bottom": 571.71875,
+    "viewportHeight": 936,
+    "heading": "We look forward to seeing you.",
+    "explicitSimulationLabel": true
+  }
+}
